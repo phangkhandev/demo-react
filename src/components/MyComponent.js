@@ -5,13 +5,28 @@
 import React from "react";
 
 class MyComponent extends React.Component {
-    //JSX 
+
+    state = {
+        name: 'Dominic Phan',
+        address: 'DT',
+        age: 22
+    };
+
+    handleClick(event) {
+
+        this.setState({
+            name: 'Phan Duong Khang',
+            age: Math.floor((Math.random() * 100) + 1)
+        })
+    }
+
+
     render() {
         return (
 
-            <div> my first component
-
-                {Math.random()}
+            <div>
+                My name is {this.state.name} and I'm {this.state.age}
+                <button onClick={(event) => { this.handleClick(event) }}>Click me</button>
             </div>
 
         );
