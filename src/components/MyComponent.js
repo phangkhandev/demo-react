@@ -7,8 +7,8 @@ class MyComponent extends React.Component {
         listUsers: [
             { id: 1, name: "Phan Duong Khang", age: "22" },
             { id: 2, name: "Dominic Phan", age: "20" },
-            { id: 3, name: "DomPhanDev", age: "24" },
-            { id: 4, name: "PhangKhanDev", age: "30" }
+            { id: 3, name: "DomPhanDev", age: "80" },
+            { id: 4, name: "PhangKhanDev", age: "16" }
         ]
     }
 
