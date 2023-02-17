@@ -12,8 +12,6 @@ class DisplayInfor extends React.Component {
     }
     render() {
         const { listUsers } = this.props;
-        // console.log(listUsers)
-        //props => properties
         return (
             <div>
                 <div>
