@@ -54,6 +54,16 @@ const DisplayInfor = (props) => {
         }, [listUsers]
     );
 
+    useEffect(
+        () => {
+            if (listUsers.length > 5) {
+                alert('No No No')
+            }
+            console.log('>>> call me useEffect')
+
+        }, [listUsers]
+    );
+
     return (
         <div className="display-infor-container">
             <div>
