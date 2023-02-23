@@ -5,7 +5,6 @@ import {
     MenuItem,
     SubMenu,
     SidebarHeader,
-    SidebarFooter,
     SidebarContent,
 } from 'react-pro-sidebar';
 
@@ -13,6 +12,7 @@ import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } fro
 import sidebarBg from '../../assets/bg2.jpg';
 import { IoBookOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 
 const SideBar = (props) => {
@@ -49,7 +49,7 @@ const SideBar = (props) => {
                         <MenuItem
                             icon={< MdDashboard />}
                         >
-                            Dashboard
+                            <Link to="/admin">Dashboard</Link>
                         </MenuItem>
                     </Menu>
                     <Menu iconShape="circle">
@@ -57,9 +57,9 @@ const SideBar = (props) => {
                             icon={<FaGem />}
                             title="Features"
                         >
-                            <MenuItem> Quản lý Users</MenuItem>
-                            <MenuItem> Quản lý bài Quiz</MenuItem>
-                            <MenuItem> Quản lý câu hỏi</MenuItem>
+                            <MenuItem> <Link to="manage-users">Quản lý Users</Link></MenuItem>
+                            <MenuItem> <Link to="">Quản lý bài Quiz</Link></MenuItem>
+                            <MenuItem> <Link to="">Quản lý câu hỏi</Link></MenuItem>
                         </SubMenu>
 
                     </Menu>
