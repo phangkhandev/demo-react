@@ -19,8 +19,6 @@ const TableUser = (props) => {
                 <tbody>
                     {listUsers && listUsers.length > 0 &&
                         listUsers.map((item, index) => {
-                            console.log('>>> check item: ', item)
-                            console.log('>>> check index: ', index)
                             return (
                                 <tr key={`table-users-${index}`}>
                                     <td>{item.id}</td>
@@ -29,7 +27,10 @@ const TableUser = (props) => {
                                     <td>{item.role}</td>
                                     <td>
                                         <button className="btn btn-primary">View</button>
-                                        <button className="btn btn-warning mx-3">Update</button>
+                                        <button
+                                            onClick={() => props.handleClickBtnUpdate(item)}
+                                            className="btn btn-warning mx-3"
+                                        >Update</button>
                                         <button className="btn btn-danger">Delete</button>
                                     </td>
                                 </tr>
