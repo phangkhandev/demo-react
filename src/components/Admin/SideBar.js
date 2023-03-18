@@ -7,8 +7,10 @@ import {
     SidebarHeader,
     SidebarContent,
 } from 'react-pro-sidebar';
+import { useNavigate } from 'react-router-dom';
+import './Admin.scss';
 
-import { FaTachometerAlt, FaGem, FaList, FaGithub, FaRegLaughWink, FaHeart } from 'react-icons/fa';
+import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
 import { IoBookOutline } from "react-icons/io5";
 import { MdDashboard } from "react-icons/md";
@@ -16,7 +18,8 @@ import { Link } from 'react-router-dom';
 
 
 const SideBar = (props) => {
-    const { image, collapsed, toggled, handleToggleSidebar } = props;
+    const { collapsed, toggled, handleToggleSidebar } = props;
+    const navigate = useNavigate();
     return (
         <>
             <ProSidebar
@@ -39,8 +42,10 @@ const SideBar = (props) => {
                             whiteSpace: 'nowrap',
                         }}
                     >
-                        <IoBookOutline color='#00bfff' size={'2em'} />{`  `}
-                        <span>App Làm Bài Thi</span>
+                        <div className='admin-back' onClick={() => navigate('/')}>
+                            <IoBookOutline color='#00bfff' size={'2em'} />{`  `}
+                            <span> App Làm Bài Thi</span>
+                        </div>
                     </div>
                 </SidebarHeader>
 
