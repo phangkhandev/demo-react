@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { postRegister } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { VscEye, VscEyeClosed } from "react-icons/vsc";
+import { ImSpinner10 } from 'react-icons/im';
 
 const Register = (props) => {
     const [email, setEmail] = useState("");
@@ -11,20 +12,43 @@ const Register = (props) => {
     const [username, setUsername] = useState("");
     const [isShowPassword, setIsShowPassword] = useState(false);
     const navigate = useNavigate();
+    const [isLoadng, setIsLoading] = useState(false);
+
+
+    const validateEmail = (email) => {
+        return String(email)
+            .toLowerCase()
+            .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            );
+    };
 
     const handleRegister = async () => {
         //validate
+        const isValidEmail = validateEmail(email);
 
+        if (!isValidEmail) {
+            toast.error('Invalid pmail!')
+            return;
+        }
+
+        if (!password) {
+            toast.error('Invalid password')
+            return;
+        }
+        setIsLoading(true);
         //submit apis
         let data = await postRegister(email, password, username);
         console.log(">>>check data", data)
         if (data && data.EC === 0) {
             toast.success(data.EM);
+            setIsLoading(false);
             navigate('/login');
         }
 
         if (data && data.EC !== 0) {
             toast.error(data.EM)
+            setIsLoading(false);
         }
     }
 
@@ -88,8 +112,10 @@ const Register = (props) => {
                     <button
                         className='btn-submit'
                         onClick={() => handleRegister()}
+                        disabled={isLoadng}
                     >
-                        Register
+                        {isLoadng === true && <ImSpinner10 className='loader-icon' />}
+                        <span> Register </span>
                     </button>
                     <div className='text-center'>
                         <span
