@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Register from './components/Auth/Register';
 import ListQuiz from './components/User/ListQuiz';
-import DetailQuiz from './components/Header/DetailQuiz';
+import DetailQuiz from './components/User/DetailQuiz';
 
 
 const NotFound = () => {
