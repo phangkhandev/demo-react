@@ -1,13 +1,16 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { getDataQuiz } from "../../services/apiService";
 import _ from "lodash";
 import './DetailQuiz.scss'
+import Question from "./Question";
 
 const DetailQuiz = (props) => {
     const params = useParams();
     const quizId = params.id;
     const location = useLocation();
+    const [dataQuiz, setDataQuiz] = useState([]);
+    const [index, setIndex] = useState(0);
 
     console.log(">>>check location: ", location)
 
@@ -34,12 +37,26 @@ const DetailQuiz = (props) => {
                         }
                         answers.push(item.answers);
                     })
-                    return { questionId: key, questionDiscription, image }
+                    return { questionId: key, answers, questionDiscription, image }
                 }
                 )
                 .value();
             console.log(">>check data", data)
+            setDataQuiz(data)
         }
+    }
+
+    console.log(">>check dataQuiz: ", dataQuiz)
+
+
+    const handlePrev = () => {
+        if (index - 1 < 0) return
+        setIndex(index - 1);
+    }
+
+    const handleNext = () => {
+        if (dataQuiz && dataQuiz.length > index + 1)
+            setIndex(index + 1);
     }
 
     return (
@@ -53,17 +70,24 @@ const DetailQuiz = (props) => {
                     <img />
                 </div>
                 <div className="q-content">
-                    <div className="question">Question 1: wwhat ???</div>
-                    <div className="answer">
-                        <div className="a-child">A</div>
-                        <div className="a-child">B</div>
-                        <div className="a-child">C</div>
-                        <div className="a-child">D</div>
-                    </div>
+                    <Question
+                        index={index}
+                        data={dataQuiz && dataQuiz.length > 0 ? dataQuiz[index] : []}
+                    />
                 </div>
                 <div className="footer">
-                    <buuton className="btn btn-secondary">Prev</buuton>
-                    <buuton className="btn btn-primary">Next</buuton>
+                    <button
+                        onClick={() => handlePrev()}
+                        className="btn btn-outline-secondary"
+                    >
+                        Prev
+                    </button>
+                    <button
+                        onClick={() => handleNext()}
+                        className="btn btn-outline-primary"
+                    >
+                        Next
+                    </button>
                 </div>
             </div>
             <div className="right-content">
