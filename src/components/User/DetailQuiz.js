@@ -12,15 +12,12 @@ const DetailQuiz = (props) => {
     const [dataQuiz, setDataQuiz] = useState([]);
     const [index, setIndex] = useState(0);
 
-    console.log(">>>check location: ", location)
-
     useEffect(() => {
         fetchQuestions();
     }, [quizId])
 
     const fetchQuestions = async () => {
         let res = await getDataQuiz(quizId);
-        console.log(">>>check questions: ", res)
         if (res && res.EC === 0) {
             let raw = res.DT;
             let data = _.chain(raw)
@@ -42,13 +39,9 @@ const DetailQuiz = (props) => {
                 }
                 )
                 .value();
-            console.log(">>check data", data)
             setDataQuiz(data)
         }
     }
-
-    console.log(">>check dataQuiz: ", dataQuiz)
-
 
     const handlePrev = () => {
         if (index - 1 < 0) return
@@ -79,6 +72,36 @@ const DetailQuiz = (props) => {
             setDataQuiz(dataQuizClone);
         }
     }
+
+    const handleFinishQuiz = () => {
+        console.log(">>>check data submit: ", dataQuiz)
+        let payload = {
+            quizId: +quizId,
+            answers: []
+        };
+        let answers = [];
+        if (dataQuiz && dataQuiz.length > 0) {
+            dataQuiz.forEach(question => {
+                let questionId = question.questionId;
+                let userAnswerId = [];
+
+                question.answers.forEach(a => {
+                    if (a.isSelected === true) {
+                        userAnswerId.push(a.id)
+                    }
+                })
+                answers.push({
+                    questionId: +questionId,
+                    userAnswerId: userAnswerId
+                })
+            })
+
+            payload.answers = answers;
+            console.log("final payload", payload)
+        }
+    }
+
+
     return (
         <div className="detail-quiz-container">
             <div className="left-content">
@@ -111,7 +134,7 @@ const DetailQuiz = (props) => {
                     </button>
 
                     <button
-                        onClick={() => handleNext()}
+                        onClick={() => handleFinishQuiz()}
                         className="btn btn-outline-warning"
                     >
                         Finish
