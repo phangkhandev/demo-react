@@ -19,6 +19,7 @@ const ManageQuiz = (props) => {
     const [type, setType] = useState('');
     const [image, setImage] = useState(null);
 
+
     const handleChangFile = (event) => {
         if (event.target && event.target.files && event.target.files[0]) {
             // setImageReview(URL.createObjectURL(event.target.files[0]))
@@ -110,6 +111,8 @@ const ManageQuiz = (props) => {
             <div className='list-detail'>
                 <TableQuiz />
             </div>
+
+
         </div>
     )
 }
