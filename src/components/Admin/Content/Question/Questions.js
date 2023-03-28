@@ -1,10 +1,14 @@
 import { useState } from 'react';
 import Select from 'react-select';
 import './Questions.scss';
-import { BsPlusCircleDotted } from "react-icons/bs";
-import { FaTrash } from "react-icons/fa";
+import { BsFillPatchPlusFill } from "react-icons/bs";
+import { BsPatchMinusFill } from "react-icons/bs";
 import { AiOutlineMinusCircle } from "react-icons/ai";
-import { AiFillPlusCircle } from "react-icons/ai";
+import { AiFillPlusSquare } from "react-icons/ai";
+import { RiImageAddFill } from "react-icons/ri";
+import { v4 as uuidv4 } from 'uuid';
+import _ from 'lodash';
+
 
 const Questions = (props) => {
     const options = [
@@ -14,13 +18,85 @@ const Questions = (props) => {
     ];
 
     const [selectedQuiz, setSelectedQuiz] = useState({});
+
+    const [questions, setQuestions] = useState(
+        [
+            {
+                id: uuidv4(),
+                description: "question 1",
+                imageFile: '',
+                imageName: '',
+                answers: [
+                    {
+                        id: uuidv4(),
+                        description: 'answer 1',
+                        isCorrect: false
+                    }
+                ]
+            }
+        ]
+
+    );
+
+
+
+    const handleAddRemoveQuestion = (type, id) => {
+        if (type === 'ADD') {
+            const newQuestion = {
+                id: uuidv4(),
+                description: '',
+                imageFile: '',
+                imageName: '',
+                answers: [
+                    {
+                        id: uuidv4(),
+                        description: '',
+                        isCorrect: false
+                    }
+                ]
+            };
+            setQuestions([...questions, newQuestion]);
+        }
+
+        if (type === 'REMOVE') {
+            let questionClone = _.cloneDeep(questions);
+
+            questionClone = questionClone.filter(item => item.id !== id);
+            setQuestions(questionClone);
+        }
+    }
+
+    const handleAddRemoveAnswer = (type, questionId, answerId) => {
+        let questionClone = _.cloneDeep(questions);
+        if (type === 'ADD') {
+            const newAnswer = {
+                id: uuidv4(),
+                description: '',
+                isCorrect: false
+            };
+
+            let index = questionClone.findIndex(item => item.id === questionId);
+            questionClone[index].answers.push(newAnswer)
+            setQuestions(questionClone);
+        }
+
+        if (type === 'REMOVE') {
+            let index = questionClone.findIndex(item => item.id === questionId);
+            questionClone[index].answers = questionClone[index].answers.filter(item => item.id !== answerId);
+            setQuestions(questionClone);
+        }
+    }
+
+    console.log("questions: ", questions)
+
     return (
         <div className="questions-container">
             <div className="title">
                 Manage question
             </div>
+            <hr />
             <div className="add-new-question">
-                <div className='col-6 form-group'>
+                <div className='mb-2'>
                     <label>Select Quiz:</label>
                     <Select
                         defaultValue={selectedQuiz}
@@ -28,51 +104,86 @@ const Questions = (props) => {
                         options={options}
                     />
                 </div>
-                <div className='mt-3'>
+                <div className='mt-3 mb-2'>
                     Add questions:
                 </div>
-                <div>
-                    <div className='questions-content'>
-                        <div className="form-floating description">
-                            <input type="type" className="form-control" placeholder="name@example.com" />
-                            <label>Description</label>
-                        </div>
-                        <div className='group-upload'>
-                            <label className='label-upload'>Upload Image</label>
-                            <input type={'file'} hidden />
-                            <span>0 file is upload</span>
-                        </div>
-                        <div className='btn-add'>
-                            <span className=''>
-                                <BsPlusCircleDotted className='icon-add' />
-                            </span>
+                {
+                    questions && questions.length > 0 &&
+                    questions.map((question, index) => {
+                        return (
+                            <div key={question.id} className='q-main mb-4'>
+                                <div className='questions-content'>
+                                    <div className="form-floating description">
+                                        <input
+                                            type="type"
+                                            className="form-control"
+                                            placeholder="name@example.com"
+                                            value={question.description}
+                                        />
+                                        <label>Question {index + 1}'s description</label>
+                                    </div>
+                                    <div className='group-upload'>
+                                        <label>
+                                            <RiImageAddFill className='label-upload' />
+                                        </label>
+                                        <input type={'file'} hidden />
+                                        <span>0 file is upload</span>
+                                    </div>
+                                    <div className='btn-add'>
+                                        <span onClick={() => handleAddRemoveQuestion('ADD', '')}>
+                                            <BsFillPatchPlusFill className='icon-add' />
+                                        </span>
+                                        {questions.length > 1 &&
+                                            <span
+                                                onClick={() => handleAddRemoveQuestion('REMOVE', question.id)}
+                                            >
+                                                <BsPatchMinusFill className='icon-remove' />
+                                            </span>
+                                        }
+                                    </div>
 
-                            <span className=''>
-                                <FaTrash className='icon-remove' />
-                            </span>
-                        </div>
+                                </div>
+                                {question.answers && question.answers.length > 0 &&
+                                    question.answers.map((answer, index) => {
+                                        return (
+                                            <div key={answer.id} className='answers-content'>
+                                                <input
+                                                    className="form-check-input iscorrect"
+                                                    type="checkbox"
+                                                />
+                                                <div className="form-floating answer-name">
+                                                    <input
+                                                        value={answer.description}
+                                                        type="type"
+                                                        className="form-control"
+                                                        placeholder="name@example.com"
+                                                    />
+                                                    <label>answers {index + 1}</label>
+                                                </div>
+                                                <div className='btn-group'>
+                                                    <span
+                                                        onClick={() => handleAddRemoveAnswer('ADD', question.id)}
+                                                    >
+                                                        <AiFillPlusSquare className='icon-add' />
+                                                    </span>
+                                                    {question.answers.length > 1 &&
+                                                        <span
+                                                            onClick={() => handleAddRemoveAnswer('REMOVE', question.id, answer.id)}
+                                                        >
+                                                            <AiOutlineMinusCircle className='icon-remove' />
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        )
+                                    })
+                                }
 
-                    </div>
-                    <div className='answers-content'>
-                        <input
-                            className="form-check-input iscorrect"
-                            type="checkbox"
-                        />
-                        <div className="form-floating answer-name">
-                            <input type="type" className="form-control" placeholder="name@example.com" />
-                            <label>answers 1</label>
-                        </div>
-                        <div className='btn-group'>
-                            <span className=''>
-                                <AiFillPlusCircle className='icon-add' />
-                            </span>
+                            </div>
+                        )
+                    })
+                }
 
-                            <span className=''>
-                                <AiOutlineMinusCircle className='icon-remove' />
-                            </span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     )
