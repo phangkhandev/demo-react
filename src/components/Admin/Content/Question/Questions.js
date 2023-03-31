@@ -10,30 +10,33 @@ import { v4 as uuidv4 } from 'uuid';
 import _ from 'lodash';
 import Lightbox from "react-awesome-lightbox";
 import { getAllQuizForAdmin, postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion } from "../../../../services/apiService";
-
+import { toast } from 'react-toastify';
 
 const Questions = (props) => {
 
     const [selectedQuiz, setSelectedQuiz] = useState({});
 
-    const [questions, setQuestions] = useState(
-        [
-            {
-                id: uuidv4(),
-                description: "",
-                imageFile: '',
-                imageName: '',
-                answers: [
-                    {
-                        id: uuidv4(),
-                        description: '',
-                        isCorrect: false
-                    }
-                ]
-            }
-        ]
+    const initQuestions = [
+        {
+            id: uuidv4(),
+            description: "",
+            imageFile: '',
+            imageName: '',
+            test: false,
+            answers: [
+                {
+                    id: uuidv4(),
+                    description: '',
+                    isCorrect: false,
+                }
+            ]
+        }
+    ];
 
-    );
+    const [isValidQuestion, setIsValidQuestion] = useState(false);
+    const [isValidAnswer, setIsValidAnswer] = useState(false);
+
+    const [questions, setQuestions] = useState(initQuestions);
 
     const [isPreviewImage, setIsPreviewImage] = useState(false);
     const [dataImageReview, setDataImageReview] = useState({
@@ -150,19 +153,75 @@ const Questions = (props) => {
 
     const handleSubmitQuestionForQuiz = async () => {
         console.log("questions: ", questions, selectedQuiz)
+        //submit question
+        // await Promise.all(questions.map(async (question) => {
+        //     const q = await postCreateNewQuestionForQuiz(+selectedQuiz.value, question.description, question.imageFile);
+        //     await Promise.all(question.answers.map(async (answer) => {
+        //         await postCreateNewAnswerForQuestion(answer.description, answer.isCorrect, q.DT.id)
+        //     }))
+        // }));
+
         //todo
-        //validate
-        // postCreateNewQuestionForQuiz, postCreateNewAnswerForQuestion
+        if (_.isEmpty(selectedQuiz)) {
+            toast.error("Please choose a Quiz!")
+            return;
+        }
+
+        //validate question
+        let isValidQ = true;
+        let indexQ1 = 0;
+        for (let i = 0; i < questions.length; i++) {
+            if (!questions[i].description) {
+                isValidQ = false;
+                indexQ1 = i;
+                setIsValidQuestion(true);
+                break;
+            }
+        }
+
+        if (isValidQ === false) {
+            toast.error(`Not empty description for Question ${indexQ1 + 1}`);
+            return;
+        }
+
+        //validate answer
+        let isValidA = true;
+        let indexQ = 0, indexA = 0;
+        for (let i = 0; i < questions.length; i++) {
+
+            for (let j = 0; j < questions[i].answers.length; j++) {
+                if (!questions[i].answers[j].description) {
+                    isValidA = false;
+                    setIsValidAnswer(true);
+                    indexA = j;
+                    break;
+                }
+            }
+            indexQ = i;
+            if (isValidA === false) break;
+        }
+
+        if (isValidA === false) {
+            toast.error(`Not empty answer ${indexA + 1} at Question ${indexQ + 1}`);
+            return;
+        }
+
 
         //submit question
-        await Promise.all(questions.map(async (question) => {
-            const q = await postCreateNewQuestionForQuiz(+selectedQuiz.value, question.description, question.imageFile);
-            await Promise.all(question.answers.map(async (answer) => {
-                await postCreateNewAnswerForQuestion(answer.description, answer.isCorrect, q.DT.id)
-            }))
-        }));
+        for (const question of questions) {
+            const q = await postCreateNewQuestionForQuiz(
+                +selectedQuiz.value, question.description, question.imageFile
+            );
+            //submit answer
+            for (const answer of question.answers) {
+                await postCreateNewAnswerForQuestion(
+                    answer.description, answer.isCorrect, q.DT.id
+                )
+            }
+        }
 
-        //submit answers
+        toast.success(`Create questions and answers succed!`)
+        setQuestions(initQuestions);
     }
 
     const handleReviewImage = (questionId) => {
@@ -202,13 +261,23 @@ const Questions = (props) => {
                             <div key={question.id} className='q-main mb-4'>
                                 <div className='questions-content'>
                                     <div className="form-floating description">
-                                        <input
-                                            type="type"
-                                            className="form-control"
-                                            placeholder="name@example.com"
-                                            value={question.description}
-                                            onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
-                                        />
+                                        {isValidQuestion === true && question.description === '' ?
+                                            <input
+                                                type="type"
+                                                className="form-control is-invalid"
+                                                placeholder="name@example.com"
+                                                value={question.description}
+                                                onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
+                                            />
+                                            :
+                                            <input
+                                                type="type"
+                                                className="form-control"
+                                                placeholder="name@example.com"
+                                                value={question.description}
+                                                onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
+                                            />
+                                        }
                                         <label>Question {index + 1}'s description</label>
                                     </div>
                                     <div className='group-upload'>
@@ -256,13 +325,23 @@ const Questions = (props) => {
                                                     onChange={(event) => handleAnswerQuestion('CHECKBOX', answer.id, question.id, event.target.checked)}
                                                 />
                                                 <div className="form-floating answer-name">
-                                                    <input
-                                                        onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
-                                                        value={answer.description}
-                                                        type="type"
-                                                        className="form-control"
-                                                        placeholder="name@example.com"
-                                                    />
+                                                    {isValidAnswer === true && answer.description === '' ?
+                                                        <input
+                                                            onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
+                                                            value={answer.description}
+                                                            type="type"
+                                                            className="form-control is-invalid"
+                                                            placeholder="name@example.com"
+                                                        />
+                                                        :
+                                                        <input
+                                                            onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
+                                                            value={answer.description}
+                                                            type="type"
+                                                            className="form-control"
+                                                            placeholder="name@example.com"
+                                                        />
+                                                    }
                                                     <label>answers {index + 1}</label>
                                                 </div>
                                                 <div className='btn-group'>
