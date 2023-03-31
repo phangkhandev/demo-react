@@ -53,6 +53,12 @@ body {
     }
   }
 
+  .main-container {
+    .app-content {
+      height: calc(100vh - 60px);
+    }
+  }
+
   .homepage-container {
     .homapage-content {
       width: 50%;

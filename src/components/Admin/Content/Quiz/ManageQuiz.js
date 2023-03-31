@@ -39,14 +39,13 @@ const ManageQuiz = (props) => {
 
 
         let res = await postCreateNewQuiz(description, name, type?.value, image);
-        console.log(res)
         if (res && res.EC === 0) {
             toast.success(res.EM);
             setName('');
             setDescription('');
             setType('');
             setImage(null);
-            setdataSubmit(res.DT);
+            setdataSubmit();
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);

@@ -39,7 +39,6 @@ const TableQuiz = (props) => {
 
     }
 
-    console.log('check dataSubmit', dataSubmit)
     return (
         <>
             <div className="list-quiz">List Quizzes </div>
