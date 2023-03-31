@@ -1,11 +1,13 @@
 import './ManageQuiz.scss'
 import Select from 'react-select';
-import { FcPlus } from "react-icons/fc"
 import { useState } from 'react';
+import { FcPlus } from "react-icons/fc"
 import { postCreateNewQuiz } from '../../../../services/apiService';
 import { toast } from 'react-toastify';
 import TableQuiz from './TableQuiz';
 import Accordion from 'react-bootstrap/Accordion';
+import QuizQA from './QuizQA';
+import AssignQuiz from './AssignQuiz';
 
 const options = [
     { value: 'EASY', label: 'EASY' },
@@ -107,17 +109,26 @@ const ManageQuiz = (props) => {
                             </fieldset>
 
                         </div>
+                        <div className='list-detail'>
+                            <TableQuiz
+                                dataSubmit={dataSubmit}
+                            />
+                        </div>
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="1">
+                    <Accordion.Header><span style={{ fontSize: "27px", fontWeight: "600" }}>Update Q/A Quiz</span></Accordion.Header>
+                    <Accordion.Body>
+                        <QuizQA />
+                    </Accordion.Body>
+                </Accordion.Item>
+                <Accordion.Item eventKey="2">
+                    <Accordion.Header><span style={{ fontSize: "27px", fontWeight: "600" }}>Assign to Users</span></Accordion.Header>
+                    <Accordion.Body>
+                        <AssignQuiz />
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
-
-            <div className='list-detail'>
-                <TableQuiz
-                    dataSubmit={dataSubmit}
-                />
-            </div>
-
-
         </div>
     )
 }
