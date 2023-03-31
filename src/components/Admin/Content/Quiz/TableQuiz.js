@@ -6,6 +6,7 @@ import ModalEditQuiz from "./ModalEditQuiz";
 import './ManageQuiz.scss'
 
 const TableQuiz = (props) => {
+    const { dataSubmit } = props;
 
     const [listQuiz, setListQuiz] = useState([]);
 
@@ -16,9 +17,9 @@ const TableQuiz = (props) => {
 
     useEffect(() => {
         fetchQuiz();
-    }, [])
+    }, [dataSubmit])
 
-    const fetchQuiz = async () => {
+    const fetchQuiz = async (props) => {
         setDataDelete({});
         setDataEdit({});
         let res = await getAllQuizForAdmin();
@@ -38,6 +39,7 @@ const TableQuiz = (props) => {
 
     }
 
+    console.log('check dataSubmit', dataSubmit)
     return (
         <>
             <div className="list-quiz">List Quizzes </div>

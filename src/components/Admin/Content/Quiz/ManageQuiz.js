@@ -18,6 +18,7 @@ const ManageQuiz = (props) => {
     const [description, setDescription] = useState('');
     const [type, setType] = useState('');
     const [image, setImage] = useState(null);
+    const [dataSubmit, setdataSubmit] = useState({});
 
 
     const handleChangFile = (event) => {
@@ -36,12 +37,14 @@ const ManageQuiz = (props) => {
 
 
         let res = await postCreateNewQuiz(description, name, type?.value, image);
+        console.log(res)
         if (res && res.EC === 0) {
             toast.success(res.EM);
             setName('');
             setDescription('');
             setType('');
             setImage(null);
+            setdataSubmit(res.DT);
         }
         if (res && res.EC !== 0) {
             toast.error(res.EM);
@@ -109,7 +112,9 @@ const ManageQuiz = (props) => {
             </Accordion>
 
             <div className='list-detail'>
-                <TableQuiz />
+                <TableQuiz
+                    dataSubmit={dataSubmit}
+                />
             </div>
 
 
