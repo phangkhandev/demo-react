@@ -30,10 +30,7 @@ const QuizQA = (props) => {
                 }
             ]
         }
-    ];
-
-    const [isValidQuestion, setIsValidQuestion] = useState(false);
-    const [isValidAnswer, setIsValidAnswer] = useState(false);
+    ]
 
     const [questions, setQuestions] = useState(initQuestions);
 
@@ -51,12 +48,38 @@ const QuizQA = (props) => {
     }, [])
 
     useEffect(() => {
-        fetchQuizWithQA();
+        if (selectedQuiz && selectedQuiz.value) {
+            fetchQuizWithQA();
+        }
     }, [selectedQuiz])
+
+    //return a promise that resolves with a File instance
+    function urltoFile(url, filename, mimeType) {
+        return (fetch(url)
+            .then(function (res) { return res.arrayBuffer(); })
+            .then(function (buf) { return new File([buf], filename, { type: mimeType }); })
+        );
+    }
 
     const fetchQuizWithQA = async () => {
         let res = await getQuizWithQA(selectedQuiz.value);
-        console.log("check res: ", res)
+        if (res && res.EC === 0) {
+            //convert base64 to file object
+            let newQA = [];
+            for (let i = 0; i < res.DT.qa.length; i++) {
+                let q = res.DT.qa[i];
+                if (q.imageFile) {
+                    q.imageName = `question - ${q.id}.png`
+                    q.imageFile =
+                        await urltoFile(`data:image/png;base64,${q.imageFile}`, `question-${q.id}.png`, 'image/png');
+                }
+                newQA.push(q);
+            }
+            setQuestions(newQA);
+            console.log("check newQA: ", newQA)
+            console.log("check res: ", res)
+        }
+
     }
 
     const fetchQuiz = async () => {
@@ -183,7 +206,6 @@ const QuizQA = (props) => {
             if (!questions[i].description) {
                 isValidQ = false;
                 indexQ1 = i;
-                setIsValidQuestion(true);
                 break;
             }
         }
@@ -201,7 +223,6 @@ const QuizQA = (props) => {
             for (let j = 0; j < questions[i].answers.length; j++) {
                 if (!questions[i].answers[j].description) {
                     isValidA = false;
-                    setIsValidAnswer(true);
                     indexA = j;
                     break;
                 }
@@ -266,23 +287,13 @@ const QuizQA = (props) => {
                             <div key={question.id} className='q-main mb-4'>
                                 <div className='questions-content'>
                                     <div className="form-floating description">
-                                        {isValidQuestion === true && question.description === '' ?
-                                            <input
-                                                type="type"
-                                                className="form-control is-invalid"
-                                                placeholder="name@example.com"
-                                                value={question.description}
-                                                onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
-                                            />
-                                            :
-                                            <input
-                                                type="type"
-                                                className="form-control"
-                                                placeholder="name@example.com"
-                                                value={question.description}
-                                                onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
-                                            />
-                                        }
+                                        <input
+                                            type="type"
+                                            className="form-control"
+                                            placeholder="name@example.com"
+                                            value={question.description}
+                                            onChange={(event) => handleOnChange('QUESTION', question.id, event.target.value)}
+                                        />
                                         <label>Question {index + 1}'s description</label>
                                     </div>
                                     <div className='group-upload'>
@@ -330,23 +341,13 @@ const QuizQA = (props) => {
                                                     onChange={(event) => handleAnswerQuestion('CHECKBOX', answer.id, question.id, event.target.checked)}
                                                 />
                                                 <div className="form-floating answer-name">
-                                                    {isValidAnswer === true && answer.description === '' ?
-                                                        <input
-                                                            onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
-                                                            value={answer.description}
-                                                            type="type"
-                                                            className="form-control is-invalid"
-                                                            placeholder="name@example.com"
-                                                        />
-                                                        :
-                                                        <input
-                                                            onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
-                                                            value={answer.description}
-                                                            type="type"
-                                                            className="form-control"
-                                                            placeholder="name@example.com"
-                                                        />
-                                                    }
+                                                    <input
+                                                        onChange={(event) => handleAnswerQuestion('INPUT', answer.id, question.id, event.target.value)}
+                                                        value={answer.description}
+                                                        type="type"
+                                                        className="form-control"
+                                                        placeholder="name@example.com"
+                                                    />
                                                     <label>answers {index + 1}</label>
                                                 </div>
                                                 <div className='btn-group'>
