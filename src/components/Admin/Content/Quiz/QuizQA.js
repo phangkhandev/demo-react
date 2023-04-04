@@ -240,8 +240,10 @@ const QuizQA = (props) => {
             questions: questionsClone
         });
 
-        console.log("check res: ", res)
-        // toast.success(`Create questions and answers succed!`)
+        if (res && res.EC === 0) {
+            toast.success(res.EM);
+            fetchQuizWithQA();
+        }
         // setQuestions(initQuestions);
     }
 
