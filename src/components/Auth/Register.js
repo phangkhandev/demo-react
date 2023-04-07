@@ -52,6 +52,12 @@ const Register = (props) => {
         }
     }
 
+    const handleKeyDown = (event) => {
+        if (event && event.keyCode === 13) {
+            handleRegister();
+        }
+    }
+
     return (
         <div className="register-container">
             <div className='header'>
@@ -72,6 +78,7 @@ const Register = (props) => {
                         className="form-control"
                         value={email}
                         onChange={(event) => setEmail(event.target.value)}
+                        onKeyDown={(event) => handleKeyDown(event)}
                     />
                 </div>
                 <div className='form-group pass-group'>
@@ -81,6 +88,7 @@ const Register = (props) => {
                         className="form-control"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
+                        onKeyDown={(event) => handleKeyDown(event)}
                     />
                     {isShowPassword ?
                         <span
@@ -105,6 +113,7 @@ const Register = (props) => {
                         type={"text"}
                         className="form-control"
                         onChange={(event) => setUsername(event.target.value)}
+                        onKeyDown={(event) => handleKeyDown(event)}
                     />
                 </div>
 
