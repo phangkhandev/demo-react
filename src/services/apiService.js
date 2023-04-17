@@ -114,4 +114,8 @@ const logout = (email, refresh_token) => {
     });
 }
 
-export { logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };
+const getOverView = () => {
+    return axios.get(`api/v1/overview`);
+}
+
+export { getOverView, logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };
