@@ -41,8 +41,6 @@ const DashBoard = (props) => {
     }
 
 
-
-    console.log(">>>check dataOv: ", dataOverView)
     return (
         <div className="dashboard-container">
             <div className='title'>

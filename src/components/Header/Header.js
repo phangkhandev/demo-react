@@ -8,11 +8,14 @@ import { logout } from '../../services/apiService';
 import { toast } from 'react-toastify';
 import { doLogout } from '../../redux/action/userAction';
 import Language from './Language';
+import Profile from './Profile';
+import { useState } from 'react';
 
 const Header = () => {
 
     const account = useSelector(state => state.user.account);
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
+    const [isShowModalProfile, setIsShowModalProfile] = useState(false);
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
@@ -36,49 +39,57 @@ const Header = () => {
     }
 
     return (
-        <Navbar bg="light" expand="lg">
-            <Container>
-                {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
-                <NavLink className="navbar-brand" to="/"><b>App làm bài thi</b></NavLink>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    {account && account.role === "ADMIN" ?
-                        <Nav className="me-auto">
-                            <NavLink className="nav-link" to="/">Home</NavLink>
-                            <NavLink className="nav-link" to="/users">Users</NavLink>
-                            <NavLink className="nav-link" to="/admin">Admin</NavLink>
-                        </Nav>
-                        :
-                        <Nav className="me-auto">
-                            <NavLink className="nav-link" to="/">Home</NavLink>
-                            <NavLink className="nav-link" to="/users">Users</NavLink>
-                        </Nav>
-                    }
-
-                    <Nav>
-                        {isAuthenticated === false ?
-
-                            <>
-                                <button className='btn-login' onClick={() => handleLogin()}>
-                                    Log in
-                                </button>
-                                <button className='btn-signup' onClick={() => handleRegister()}>
-                                    Sign up
-                                </button>
-                            </>
+        <>
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
+                    <NavLink className="navbar-brand" to="/"><b>Website làm bài thi</b></NavLink>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        {account && account.role === "ADMIN" ?
+                            <Nav className="me-auto">
+                                <NavLink className="nav-link" to="/">Home</NavLink>
+                                <NavLink className="nav-link" to="/users">Users</NavLink>
+                                <NavLink className="nav-link" to="/admin">Admin</NavLink>
+                            </Nav>
                             :
-                            <NavDropdown title="Settings" id="basic-nav-dropdown">
-                                <NavDropdown.Item>Profile</NavDropdown.Item>
-                                <NavDropdown.Item onClick={() => handleLogOut()}>Log out</NavDropdown.Item>
-                            </NavDropdown>
+                            <Nav className="me-auto">
+                                <NavLink className="nav-link" to="/">Home</NavLink>
+                                <NavLink className="nav-link" to="/users">Users</NavLink>
+                            </Nav>
                         }
 
-                        <Language />
+                        <Nav>
+                            {isAuthenticated === false ?
 
-                    </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+                                <>
+                                    <button className='btn-login' onClick={() => handleLogin()}>
+                                        Log in
+                                    </button>
+                                    <button className='btn-signup' onClick={() => handleRegister()}>
+                                        Sign up
+                                    </button>
+                                </>
+                                :
+                                <NavDropdown title="Settings" id="basic-nav-dropdown">
+                                    <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Profile</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleLogOut()}>Log out</NavDropdown.Item>
+                                </NavDropdown>
+                            }
+
+                            <Language />
+
+                        </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+
+            <Profile
+                show={isShowModalProfile}
+                setShow={setIsShowModalProfile}
+            />
+        </>
+
     );
 }
 
