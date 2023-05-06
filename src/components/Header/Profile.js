@@ -2,7 +2,7 @@ import Modal from 'react-bootstrap/Modal';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Yourinfor from './Yourinfor';
-import Password from './Password';
+import Password from './Changepass'
 
 const Profile = (props) => {
 
