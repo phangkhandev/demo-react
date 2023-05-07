@@ -65,11 +65,11 @@ const Question = (props) => {
                                     {isShowAnswer === true &&
                                         <>
                                             {a.isSelected === true && a.isCorrect === false
-                                                && <IoIosClose className='incorrect' />
+                                                && <IoIosClose className='incorrect text-danger' style={{ fontSize: "28px" }} />
                                             }
 
                                             {a.isCorrect === true
-                                                && <IoIosCheckmark className='correct' />
+                                                && <IoIosCheckmark className='correct text-primary' style={{ fontSize: "30px" }} />
                                             }
                                         </>
                                     }

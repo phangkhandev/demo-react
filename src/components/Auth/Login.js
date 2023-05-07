@@ -71,7 +71,7 @@ const Login = (props) => {
                 <Language />
             </div>
             <div className='title col-3 mx-auto'>
-                App làm bài thi
+                Website làm bài thi
             </div>
             <div className='welcom col-3 mx-auto'>
                 Hello, who's this?
