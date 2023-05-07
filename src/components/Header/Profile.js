@@ -24,7 +24,7 @@ const Profile = (props) => {
                 className="modal-Profile"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Modal title</Modal.Title>
+                    <Modal.Title>Profile</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
