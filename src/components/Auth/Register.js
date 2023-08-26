@@ -67,7 +67,7 @@ const Register = (props) => {
                 <Language />
             </div>
             <div className='title col-3 mx-auto'>
-                Website làm bài thi
+                Website Ôn Thi Bằng Lái Xe
             </div>
             <div className='welcom col-3 mx-auto'>
                 start your journey?

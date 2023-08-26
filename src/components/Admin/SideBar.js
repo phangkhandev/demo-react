@@ -44,7 +44,7 @@ const SideBar = (props) => {
                     >
                         <div className='admin-back' onClick={() => navigate('/')}>
                             <IoBookOutline color='#00bfff' size={'2em'} />{`  `}
-                            <span> Website Làm Bài Thi</span>
+                            <span> Website Ôn Thi Bằng Lái Xe</span>
                         </div>
                     </div>
                 </SidebarHeader>

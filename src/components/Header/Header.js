@@ -43,7 +43,7 @@ const Header = () => {
             <Navbar bg="light" expand="lg">
                 <Container>
                     {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
-                    <NavLink className="navbar-brand" to="/"><b>Website làm bài thi</b></NavLink>
+                    <NavLink className="navbar-brand" to="/"><b>Website Ôn Thi Bằng Lái Xe</b></NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         {account && account.role === "ADMIN" ?
