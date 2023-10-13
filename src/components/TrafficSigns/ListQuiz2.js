@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getQuizByUser } from "../../services/apiService";
-import "./ListQuiz.scss";
+import "./ListQuiz2.scss";
 import { useNavigate } from "react-router-dom";
 
-const ListQuiz = (props) => {
+const ListQuiz2 = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
     const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ const ListQuiz = (props) => {
             {arrQuiz && arrQuiz.length > 0 &&
                 arrQuiz.map((quiz, index) => {
                     console.log("check q: ", quiz.id)
-                    if (quiz.id) {
+                    if (quiz.id < 32) {
 
                         return (
                             <div key={`${index}-quiz`} className="card" style={{ width: "18rem" }}>
@@ -53,4 +53,4 @@ const ListQuiz = (props) => {
     )
 }
 
-export default ListQuiz;
+export default ListQuiz2;

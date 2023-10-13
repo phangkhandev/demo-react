@@ -49,17 +49,19 @@ const Header = () => {
                         {account && account.role === "ADMIN" ?
                             <Nav className="me-auto">
                                 <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
-                                <NavLink className="nav-link" to="/users">Bài Thi</NavLink>
-                                <NavLink className="nav-link" to="/trafficsigns">Biển Báo</NavLink>
-                                <NavLink className="nav-link" to="/shape">Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
+                                <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
+                                <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
                                 <NavLink className="nav-link" to="/admin">Admin</NavLink>
                             </Nav>
                             :
                             <Nav className="me-auto">
                                 <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
-                                <NavLink className="nav-link" to="/users">Bài Thi</NavLink>
-                                <NavLink className="nav-link" to="/trafficsigns">Biển Báo</NavLink>
-                                <NavLink className="nav-link" to="/shape">Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
+                                <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
+                                <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
                             </Nav>
                         }
 

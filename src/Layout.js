@@ -17,6 +17,9 @@ import PrivateRoute from './routes/PrivateRoute';
 import React, { Suspense } from 'react';
 import TrafficSigns from './components/TrafficSigns/TrafficSigns';
 import Shape from './components/Shape/Shape';
+import ListQuiz2 from './components/TrafficSigns/ListQuiz2';
+import DetailQuiz2 from './components/TrafficSigns/DetailQuiz2';
+import ParalysisPoint from './components/ParalysisPoint/ParalysisPoint';
 
 
 const NotFound = () => {
@@ -33,19 +36,30 @@ const Layout = (props) => {
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<HomePage />} />
-                    <Route path="users"
+                    <Route path="baithi"
                         element={
                             <PrivateRoute>
                                 <ListQuiz />
                             </PrivateRoute>
                         }
                     />
+
+                    <Route path="bienbao"
+                        element={
+                            <PrivateRoute>
+                                <ListQuiz2 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="sahinh" element={<Shape />} />
+                    <Route path="diemliet" element={<ParalysisPoint />} />
+
+
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
-
-                <Route path="/trafficsigns" element={<TrafficSigns />} />
-                <Route path="/shape" element={<Shape />} />
+                <Route path="/quiz/:id" element={<DetailQuiz2 />} />
 
                 <Route path="/admin"
                     element={
