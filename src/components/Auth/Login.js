@@ -71,7 +71,7 @@ const Login = (props) => {
                 <Language />
             </div>
             <div className='title col-3 mx-auto'>
-                Website Ôn Thi Bằng Lái Xe
+                Thi Bằng Lái Xe
             </div>
             <div className='welcom col-3 mx-auto'>
                 Hello, who's this?
@@ -127,7 +127,7 @@ const Login = (props) => {
                             className='back'
                             onClick={() => navigate('/')}
                         >
-                            &#60;&#60; Go Back Home
+                            &#60;&#60; Trang Chủ
                         </span>
                     </div>
                 </div>

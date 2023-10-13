@@ -43,19 +43,23 @@ const Header = () => {
             <Navbar bg="light" expand="lg">
                 <Container>
                     {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
-                    <NavLink className="navbar-brand" to="/"><b>Website Ôn Thi Bằng Lái Xe</b></NavLink>
+                    <NavLink className="navbar-brand" to="/"><b>Thi Bằng Lái Xe</b></NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         {account && account.role === "ADMIN" ?
                             <Nav className="me-auto">
-                                <NavLink className="nav-link" to="/">Home</NavLink>
-                                <NavLink className="nav-link" to="/users">Users</NavLink>
+                                <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
+                                <NavLink className="nav-link" to="/users">Bài Thi</NavLink>
+                                <NavLink className="nav-link" to="/trafficsigns">Biển Báo</NavLink>
+                                <NavLink className="nav-link" to="/shape">Sa Hình</NavLink>
                                 <NavLink className="nav-link" to="/admin">Admin</NavLink>
                             </Nav>
                             :
                             <Nav className="me-auto">
-                                <NavLink className="nav-link" to="/">Home</NavLink>
-                                <NavLink className="nav-link" to="/users">Users</NavLink>
+                                <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
+                                <NavLink className="nav-link" to="/users">Bài Thi</NavLink>
+                                <NavLink className="nav-link" to="/trafficsigns">Biển Báo</NavLink>
+                                <NavLink className="nav-link" to="/shape">Sa Hình</NavLink>
                             </Nav>
                         }
 
@@ -64,16 +68,16 @@ const Header = () => {
 
                                 <>
                                     <button className='btn-login' onClick={() => handleLogin()}>
-                                        Log in
+                                        Đăng nhập
                                     </button>
                                     <button className='btn-signup' onClick={() => handleRegister()}>
-                                        Sign up
+                                        Đăng ký
                                     </button>
                                 </>
                                 :
                                 <NavDropdown title="Settings" id="basic-nav-dropdown">
-                                    <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Profile</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={() => handleLogOut()}>Log out</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Thông tin cá nhân</NavDropdown.Item>
+                                    <NavDropdown.Item onClick={() => handleLogOut()}>Đăng xuất</NavDropdown.Item>
                                 </NavDropdown>
                             }
 

@@ -15,6 +15,8 @@ import ManageQuiz from './components/Admin/Content/Quiz/ManageQuiz';
 import Questions from './components/Admin/Content/Question/Questions';
 import PrivateRoute from './routes/PrivateRoute';
 import React, { Suspense } from 'react';
+import TrafficSigns from './components/TrafficSigns/TrafficSigns';
+import Shape from './components/Shape/Shape';
 
 
 const NotFound = () => {
@@ -41,6 +43,9 @@ const Layout = (props) => {
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
+
+                <Route path="/trafficsigns" element={<TrafficSigns />} />
+                <Route path="/shape" element={<Shape />} />
 
                 <Route path="/admin"
                     element={

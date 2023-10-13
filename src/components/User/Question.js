@@ -42,7 +42,7 @@ const Question = (props) => {
 
                 </div>
             }
-            <div className="question">{t('quiz.question')} {index + 1}: {data.questionDescription} ?</div>
+            <div className="question">{t('Câu')} {index + 1}: {data.questionDescription} ?</div>
             <div className="answer">
                 {data.answers && data.answers.length &&
                     data.answers.map((a, i) => {
