@@ -20,6 +20,13 @@ import Shape from './components/Shape/Shape';
 import ListQuiz2 from './components/TrafficSigns/ListQuiz2';
 import DetailQuiz2 from './components/TrafficSigns/DetailQuiz2';
 import ParalysisPoint from './components/ParalysisPoint/ParalysisPoint';
+import Culture from './components/Culture/Culture';
+import ListQuiz3 from './components/Shape/ListQuiz3';
+import DetailQuiz3 from './components/Shape/DetailQuiz3';
+import ListQuiz4 from './components/Culture/ListQuiz4';
+import DetailQuiz4 from './components/Culture/DetailQuiz4';
+import ListQuiz5 from './components/ParalysisPoint/ListQuiz5';
+import DetailQuiz5 from './components/ParalysisPoint/DetailQuiz5';
 
 
 const NotFound = () => {
@@ -32,7 +39,7 @@ const NotFound = () => {
 
 const Layout = (props) => {
     return (
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Đang tải chờ chút...</div>}>
             <Routes>
                 <Route path="/" element={<App />} >
                     <Route index element={<HomePage />} />
@@ -52,14 +59,37 @@ const Layout = (props) => {
                         }
                     />
 
-                    <Route path="sahinh" element={<Shape />} />
-                    <Route path="diemliet" element={<ParalysisPoint />} />
+                    <Route path="sahinh"
+                        element={
+                            <PrivateRoute>
+                                <ListQuiz3 />
+                            </PrivateRoute>
+                        }
+                    />
 
+                    <Route path="vanhoa"
+                        element={
+                            <PrivateRoute>
+                                <ListQuiz4 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="diemliet"
+                        element={
+                            <PrivateRoute>
+                                <ListQuiz5 />
+                            </PrivateRoute>
+                        }
+                    />
 
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
                 <Route path="/quiz/:id" element={<DetailQuiz2 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz3 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz4 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
 
                 <Route path="/admin"
                     element={

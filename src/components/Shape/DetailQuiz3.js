@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import CountDown from "./Content/CountDown";
 
-const DetailQuiz = (props) => {
+const DetailQuiz3 = (props) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const params = useParams();
@@ -162,24 +162,9 @@ const DetailQuiz = (props) => {
     }
     return (
         <>
-            <Breadcrumb className="quiz-detai-new-header" style={{ fontSize: "20px" }}>
-                <NavLink to='/' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
+            <Breadcrumb className="quiz-detai-new-header">
+                <NavLink to='/' className='breadcrumb-item'>
                     Trang chủ
-                </NavLink>
-                <NavLink to='/baithi' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
-                    Bài thi
-                </NavLink>
-                <NavLink to='/bienbao' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
-                    Chủ đề biển báo
-                </NavLink>
-                <NavLink to='/sahinh' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
-                    Chủ đề sa hình
-                </NavLink>
-                <NavLink to='/vanhoa' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
-                    Văn hoá giao thông
-                </NavLink>
-                <NavLink to='/diemliet' className='breadcrumb-item' style={{ textDecoration: "none", color: "blue" }}>
-                    Câu hỏi điểm liệt
                 </NavLink>
                 <Breadcrumb.Item active>
                     Làm bài
@@ -239,4 +224,4 @@ const DetailQuiz = (props) => {
     )
 }
 
-export default DetailQuiz;
+export default DetailQuiz3;

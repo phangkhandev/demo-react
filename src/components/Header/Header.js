@@ -45,15 +45,16 @@ const Header = () => {
                     {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
                     <NavLink className="navbar-brand" to="/"><b>Thi Bằng Lái Xe</b></NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Navbar.Collapse id="basic-navbar-nav" style={{ fontWeight: "600" }}>
                         {account && account.role === "ADMIN" ?
                             <Nav className="me-auto">
                                 <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
                                 <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
                                 <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
                                 <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
                                 <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
-                                <NavLink className="nav-link" to="/admin">Admin</NavLink>
+                                {/* <NavLink className="nav-link" to="/admin">Admin</NavLink> */}
                             </Nav>
                             :
                             <Nav className="me-auto">
@@ -61,6 +62,7 @@ const Header = () => {
                                 <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
                                 <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
                                 <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                                <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
                                 <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
                             </Nav>
                         }
@@ -77,13 +79,14 @@ const Header = () => {
                                     </button>
                                 </>
                                 :
-                                <NavDropdown title="Settings" id="basic-nav-dropdown">
+                                <NavDropdown title="Cài đặt" id="basic-nav-dropdown" style={{ marginRight: "40px" }}>
                                     <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Thông tin cá nhân</NavDropdown.Item>
                                     <NavDropdown.Item onClick={() => handleLogOut()}>Đăng xuất</NavDropdown.Item>
                                 </NavDropdown>
+
                             }
 
-                            <Language />
+                            <div style={{ fontWeight: "800" }}><NavLink className="nav-link" to="/admin">Admin</NavLink></div>
 
                         </Nav>
                     </Navbar.Collapse>

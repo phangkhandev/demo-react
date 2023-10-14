@@ -5,7 +5,7 @@ import _ from 'lodash';
 import './DetailQuiz.scss';
 import Question from "./Question";
 import ModalResult from "./ModalResult";
-import RightContent from "./Content/RightContent";
+import RightContent2 from "./Content/RightContent2";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { NavLink } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
@@ -162,13 +162,10 @@ const DetailQuiz2 = (props) => {
         <>
             <Breadcrumb className="quiz-detai-new-header">
                 <NavLink to='/' className='breadcrumb-item'>
-                    Home
-                </NavLink>
-                <NavLink to='/users' className='breadcrumb-item'>
-                    User
+                    Trang chủ
                 </NavLink>
                 <Breadcrumb.Item active>
-                    Do Quizz
+                    Làm bài
                 </Breadcrumb.Item>
             </Breadcrumb>
             <div className="detail-quiz-container">
@@ -196,19 +193,19 @@ const DetailQuiz2 = (props) => {
                     <div className="footer">
                         <button className="btn btn-secondary"
                             onClick={() => handlePrev()}
-                        >Prev</button>
+                        >Câu trước</button>
                         <button
                             onClick={() => handleNext()}
-                            className="btn btn-primary">Next</button>
+                            className="btn btn-primary">Câu sau</button>
 
                         <button
                             disabled={isSubmitQuiz}
                             onClick={() => handleFinishQuiz()}
-                            className="btn btn-warning">Finish</button>
+                            className="btn btn-warning">Nộp bài</button>
                     </div>
                 </div>
                 <div className="right-content">
-                    <RightContent
+                    <RightContent2
                         dataQuiz={dataQuiz}
                         handleFinishQuiz={handleFinishQuiz}
                         setIndex={setIndex}

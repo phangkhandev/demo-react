@@ -12,7 +12,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import CountDown from "./Content/CountDown";
 
-const DetailQuiz = (props) => {
+const DetailQuiz5 = (props) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const params = useParams();
@@ -239,4 +239,4 @@ const DetailQuiz = (props) => {
     )
 }
 
-export default DetailQuiz;
+export default DetailQuiz5;

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { getQuizByUser } from "../../services/apiService";
-import "./ListQuiz2.scss";
+import "./ListQuiz.scss";
 import { useNavigate } from "react-router-dom";
 
-const ListQuiz2 = (props) => {
+const ListQuiz5 = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
     const navigate = useNavigate();
 
@@ -20,10 +20,11 @@ const ListQuiz2 = (props) => {
 
     return (
         <div>
+
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&
                     arrQuiz.map((quiz, index) => {
-                        if (quiz.id > 34 && quiz.id < 44) {
+                        if (quiz.id > 61 && quiz.id < 71) {
 
                             return (
                                 <div key={`${index}-quiz`} className="card" style={{ width: "18rem" }}>
@@ -51,9 +52,10 @@ const ListQuiz2 = (props) => {
 
             </div>
 
+
             <div style={{ marginBottom: "60px" }}></div>
         </div>
     )
 }
 
-export default ListQuiz2;
+export default ListQuiz5;

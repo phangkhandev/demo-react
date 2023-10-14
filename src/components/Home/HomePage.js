@@ -1,7 +1,8 @@
 import videoHomePage from "../../assets/video-homepage.mp4";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useTranslation, Trans } from "react-i18next"
+import { useTranslation, Trans } from "react-i18next";
+import Logo from "../../assets/sa-hinh-la-gi-1.jpg";
 const HomePage = (props) => {
 
     const navigate = useNavigate();
@@ -21,6 +22,9 @@ const HomePage = (props) => {
             </video>
 
             <div className="homapage-content">
+                <div>
+                    <img src={Logo} />
+                </div>
                 <div className="homepage-title1">
 
                     {t('homepage.title1')}
@@ -30,11 +34,14 @@ const HomePage = (props) => {
                 </div>
                 <div className="homepage-button">
                     {isAuthenticated === false ?
-                        <button onClick={() => navigate('/login')}>Get started - it's free</button>
+                        <button onClick={() => navigate('/login')}>Làm bài bây giờ</button>
                         :
-                        <button onClick={() => navigate('/users')}>Doing Quiz Now</button>
+                        <button onClick={() => navigate('/baithi')}>Làm bài bây giờ</button>
                     }
 
+                </div>
+                <div>
+                    <br />
                 </div>
 
             </div>
