@@ -48,13 +48,14 @@ const Header = () => {
                     <Navbar.Collapse id="basic-navbar-nav" style={{ fontWeight: "600" }}>
                         {account && account.role === "ADMIN" ?
                             <Nav className="me-auto">
-                                <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
-                                <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
-                                <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
-                                <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
-                                <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
-                                <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
-                                {/* <NavLink className="nav-link" to="/admin">Admin</NavLink> */}
+                                <>
+                                    <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
+                                    <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
+                                    <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
+                                    <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                                    <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
+                                    <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
+                                </>
                             </Nav>
                             :
                             <Nav className="me-auto">
@@ -79,14 +80,31 @@ const Header = () => {
                                     </button>
                                 </>
                                 :
-                                <NavDropdown title="Cài đặt" id="basic-nav-dropdown" style={{ marginRight: "40px" }}>
-                                    <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Thông tin cá nhân</NavDropdown.Item>
-                                    <NavDropdown.Item onClick={() => handleLogOut()}>Đăng xuất</NavDropdown.Item>
-                                </NavDropdown>
+                                <>
+                                    {account && account.role === "USER" ?
+                                        <NavDropdown title="Cài đặt" id="basic-nav-dropdown" style={{ marginRight: "40px" }}>
+                                            <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Thông tin cá nhân</NavDropdown.Item>
+                                            <NavDropdown.Item onClick={() => handleLogOut()}>Đăng xuất</NavDropdown.Item>
+                                        </NavDropdown>
+                                        :
+                                        <>
+                                            <NavDropdown title="Cài đặt" id="basic-nav-dropdown" style={{ marginRight: "40px" }}>
+                                                <NavDropdown.Item onClick={() => setIsShowModalProfile(true)}>Thông tin cá nhân</NavDropdown.Item>
+                                                <NavDropdown.Item onClick={() => handleLogOut()}>Đăng xuất</NavDropdown.Item>
+                                            </NavDropdown>
+                                            <div style={{ fontWeight: "800" }}><NavLink className="nav-link" to="/admin">Admin</NavLink></div>
+                                        </>
+
+
+                                    }
+
+
+                                </>
 
                             }
 
-                            <div style={{ fontWeight: "800" }}><NavLink className="nav-link" to="/admin">Admin</NavLink></div>
+
+
 
                         </Nav>
                     </Navbar.Collapse>
