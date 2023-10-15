@@ -129,5 +129,8 @@ const postChangPassword = (current_password, new_password) => {
     return axios.post(`api/v1/change-password`, { current_password, new_password });
 }
 
+const getHistory = () => {
+    return axios.get(`api/v1/history`);
+}
 
-export { postChangPassword, postUpdateProfile, getOverView, logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };
+export { getHistory, postChangPassword, postUpdateProfile, getOverView, logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };
