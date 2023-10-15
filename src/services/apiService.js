@@ -125,4 +125,9 @@ const postUpdateProfile = (username, userImage) => {
     return axios.post('api/v1/profile', data);
 }
 
-export { postUpdateProfile, getOverView, logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };
+const postChangPassword = (current_password, new_password) => {
+    return axios.post(`api/v1/change-password`, { current_password, new_password });
+}
+
+
+export { postChangPassword, postUpdateProfile, getOverView, logout, postUpsertQA, getQuizWithQA, postCreateNewQuestionForQuiz, putEditQuiz, deleteQuiz, getAllQuizForAdmin, postCreateNewQuiz, getDataQuiz, postCreateNewUser, getAllUsers, putUpdateUser, deleteUser, getUserWithPaginate, postLogin, postRegister, getQuizByUser, postSubmitQuiz, postCreateNewAnswerForQuestion, postAssignQuiz };

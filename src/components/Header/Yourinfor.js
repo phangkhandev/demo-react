@@ -10,7 +10,6 @@ const Yourinfor = (props) => {
     const account = useSelector(state => state.user.account);
 
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [username, setUsername] = useState("");
     const [role, setRole] = useState("USER");
     const [image, setImage] = useState("");
@@ -83,7 +82,7 @@ const Yourinfor = (props) => {
                 </div>
                 <div className='col-md-12'>
                     <label className="form-label label-upload " htmlFor="labelUpload">
-                        <FcPlus /> Uplooad file Image
+                        <FcPlus /> Cập nhật hình ảnh
                     </label>
                     <input type="file"
                         hidden
@@ -97,7 +96,7 @@ const Yourinfor = (props) => {
                 </div>
             </form>
             <Button variant="primary" onClick={() => handleUpdateProfile()}>
-                Update
+                Cập nhật
             </Button>
         </>
     );

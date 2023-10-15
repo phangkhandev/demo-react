@@ -3,6 +3,7 @@ import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 import Yourinfor from './Yourinfor';
 import Password from './Changepass'
+import History from './History';
 
 const Profile = (props) => {
 
@@ -24,7 +25,7 @@ const Profile = (props) => {
                 className="modal-Profile"
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Profile</Modal.Title>
+                    <Modal.Title>Quản lý thông tin người dùng</Modal.Title>
                 </Modal.Header>
 
                 <Modal.Body>
@@ -33,14 +34,14 @@ const Profile = (props) => {
                         id="uncontrolled-tab-example"
                         className="mb-3"
                     >
-                        <Tab eventKey="home" title="Main infor">
+                        <Tab eventKey="home" title="Thông tin">
                             <Yourinfor />
                         </Tab>
-                        <Tab eventKey="profile" title="Password">
+                        <Tab eventKey="profile" title="Mật khẩu">
                             <Password />
                         </Tab>
-                        <Tab eventKey="history" title="History">
-                            history
+                        <Tab eventKey="history" title="Lịch sử">
+                            <History />
                         </Tab>
                     </Tabs>
                 </Modal.Body>
