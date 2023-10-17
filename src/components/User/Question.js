@@ -18,7 +18,6 @@ const Question = (props) => {
         props.handleCheckbox(aId, qId)
     }
 
-
     return (
         <>
             {data.image ?
@@ -46,6 +45,7 @@ const Question = (props) => {
             <div className="answer">
                 {data.answers && data.answers.length &&
                     data.answers.map((a, i) => {
+
                         return (
                             <div
                                 key={`answer-${i}`}

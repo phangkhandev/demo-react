@@ -95,6 +95,7 @@ const DetailQuiz = (props) => {
 
 
     const handleFinishQuiz = async () => {
+
         let payload = {
             quizId: +quizId,
             answers: []
@@ -188,7 +189,7 @@ const DetailQuiz = (props) => {
             <div className="detail-quiz-container">
                 <div className="left-content">
                     <div className="title">
-                        Quiz {quizId}: {location?.state?.quizTitle}
+                        {location?.state?.quizTitle}
                     </div>
                     <hr className="m-0" />
                     <div className="q-body">
