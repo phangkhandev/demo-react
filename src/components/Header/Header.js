@@ -10,6 +10,7 @@ import { doLogout } from '../../redux/action/userAction';
 import Language from './Language';
 import Profile from './Profile';
 import { useState } from 'react';
+import './Header.scss'
 
 const Header = () => {
 
@@ -39,14 +40,25 @@ const Header = () => {
     }
 
     return (
-        <>
+        <div style={{ backgroundColor: "green" }}>
             <Navbar bg="light" expand="lg">
-                <Container>
+                <Container className='Containerscss'>
                     {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
-                    <NavLink className="navbar-brand" to="/"><b>Thi Bằng Lái Xe</b></NavLink>
+                    <NavLink className="navbar-brand" to="/"><b style={{ color: "white" }}>Thi Bằng Lái Xe</b></NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" style={{ fontWeight: "600" }}>
-                        {account && account.role === "ADMIN" ?
+
+                        <Nav className="me-auto">
+                            <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
+                            <NavLink className="nav-link" to="/baithi">Bài Thi</NavLink>
+                            <NavLink className="nav-link" to="/bienbao">Chủ đề Biển Báo</NavLink>
+                            <NavLink className="nav-link" to="/sahinh">Chủ đề Sa Hình</NavLink>
+                            <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
+                            <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
+                        </Nav>
+
+
+                        {/* {account && account.role === "ADMIN" ?
                             <Nav className="me-auto">
                                 <>
                                     <NavLink className="nav-link" to="/">Trang Chủ</NavLink>
@@ -66,7 +78,7 @@ const Header = () => {
                                 <NavLink className="nav-link" to="/vanhoa">Văn hoá giao thông</NavLink>
                                 <NavLink className="nav-link" to="/diemliet">Câu hỏi điểm liệt</NavLink>
                             </Nav>
-                        }
+                        } */}
 
                         <Nav>
                             {isAuthenticated === false ?
@@ -115,7 +127,7 @@ const Header = () => {
                 show={isShowModalProfile}
                 setShow={setIsShowModalProfile}
             />
-        </>
+        </div>
 
     );
 }

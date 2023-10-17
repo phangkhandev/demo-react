@@ -24,12 +24,10 @@ const ListQuiz2 = (props) => {
                 {arrQuiz && arrQuiz.length > 0 &&
                     arrQuiz.map((quiz, index) => {
                         if (quiz.id > 34 && quiz.id < 44) {
-
                             return (
-                                <div key={`${index}-quiz`} className="card" style={{ width: "18rem" }}>
-                                    <img src={`data:image/jpeg;base64, ${quiz.image}`} className="card-img-top" alt="..." />
+                                <div key={`${index}-quiz`} className="card" style={{ width: "14rem" }}>
+                                    <img src={`data:image/jpeg;base64, ${quiz.image}`} style={{ width: "8rem", height: "8rem", marginLeft: "42px" }} alt="..." />
                                     <div className="card-body">
-                                        <h5 className="card-title">Quiz {quiz.id + 1}</h5>
                                         <p className="card-text">{quiz.description}</p>
                                         <button
                                             className="btn btn-primary"

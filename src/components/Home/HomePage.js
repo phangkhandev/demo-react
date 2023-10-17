@@ -13,13 +13,13 @@ const HomePage = (props) => {
 
     return (
         <div className="homepage-container">
-            <video autoPlay loop muted>
+            {/* <video autoPlay loop muted>
                 <source
                     src={videoHomePage}
                     type="video/mp4"
                 />
 
-            </video>
+            </video> */}
 
             <div className="homapage-content">
                 <div>
