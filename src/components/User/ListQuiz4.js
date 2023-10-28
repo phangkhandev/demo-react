@@ -1,3 +1,5 @@
+//Văn hoá
+
 import { useEffect, useState } from "react";
 import { getQuizByUser } from "../../services/apiService";
 import "./ListQuiz.scss";

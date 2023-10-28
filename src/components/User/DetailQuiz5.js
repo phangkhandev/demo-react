@@ -1,3 +1,5 @@
+// Điểm liệt
+
 import { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { getDataQuiz, postSubmitQuiz } from "../../services/apiService";
@@ -12,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import CountDown from "./Content/CountDown";
 
-const DetailQuiz4 = (props) => {
+const DetailQuiz5 = (props) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
     const params = useParams();
@@ -239,4 +241,4 @@ const DetailQuiz4 = (props) => {
     )
 }
 
-export default DetailQuiz4;
+export default DetailQuiz5;

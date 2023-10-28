@@ -5,11 +5,11 @@ import _ from 'lodash';
 import './DetailQuiz.scss';
 import Question from "./Question";
 import ModalResult from "./ModalResult";
-import RightContent2 from "./Content/RightContent2";
 import Breadcrumb from 'react-bootstrap/Breadcrumb';
 import { NavLink } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
+import RightContent from "./Content/RightContent";
 
 const DetailQuiz2 = (props) => {
     const navigate = useNavigate();
@@ -205,7 +205,7 @@ const DetailQuiz2 = (props) => {
                     </div>
                 </div>
                 <div className="right-content">
-                    <RightContent2
+                    <RightContent
                         dataQuiz={dataQuiz}
                         handleFinishQuiz={handleFinishQuiz}
                         setIndex={setIndex}

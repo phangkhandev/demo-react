@@ -25,6 +25,8 @@ const DetailQuiz = (props) => {
 
     const [isShowModalResult, setIsShowModalResult] = useState(false);
     const [dataModalResult, setDataModalResult] = useState({})
+    const [check, setCheck] = useState(false);
+
 
     useEffect(() => {
         fetchQuestions();
@@ -95,7 +97,7 @@ const DetailQuiz = (props) => {
 
 
     const handleFinishQuiz = async () => {
-
+        setCheck(true);
         let payload = {
             quizId: +quizId,
             answers: []
@@ -227,6 +229,7 @@ const DetailQuiz = (props) => {
                         dataQuiz={dataQuiz}
                         handleFinishQuiz={handleFinishQuiz}
                         setIndex={setIndex}
+                        check={check}
                     />
                 </div>
                 <ModalResult

@@ -11,22 +11,20 @@ import 'react-toastify/dist/ReactToastify.css';
 import Register from './components/Auth/Register';
 import ListQuiz from './components/User/ListQuiz';
 import DetailQuiz from './components/User/DetailQuiz';
+import ListQuiz5 from './components/User/ListQuiz5';
+import DetailQuiz5 from './components/User/DetailQuiz5';
+import ListQuiz4 from './components/User/ListQuiz4';
+import DetailQuiz4 from './components/User/DetailQuiz4';
+import ListQuiz3 from './components/User/ListQuiz3';
+import DetailQuiz3 from './components/User/DetailQuiz3';
+import ListQuiz2 from './components/User/ListQuiz2';
+import DetailQuiz2 from './components/User/DetailQuiz2';
 import ManageQuiz from './components/Admin/Content/Quiz/ManageQuiz';
 import Questions from './components/Admin/Content/Question/Questions';
 import PrivateRoute from './routes/PrivateRoute';
 import React, { Suspense } from 'react';
-import TrafficSigns from './components/TrafficSigns/TrafficSigns';
-import Shape from './components/Shape/Shape';
-import ListQuiz2 from './components/TrafficSigns/ListQuiz2';
-import DetailQuiz2 from './components/TrafficSigns/DetailQuiz2';
-import ParalysisPoint from './components/ParalysisPoint/ParalysisPoint';
-import Culture from './components/Culture/Culture';
-import ListQuiz3 from './components/Shape/ListQuiz3';
-import DetailQuiz3 from './components/Shape/DetailQuiz3';
-import ListQuiz4 from './components/Culture/ListQuiz4';
-import DetailQuiz4 from './components/Culture/DetailQuiz4';
-import ListQuiz5 from './components/ParalysisPoint/ListQuiz5';
-import DetailQuiz5 from './components/ParalysisPoint/DetailQuiz5';
+
+
 
 
 const NotFound = () => {

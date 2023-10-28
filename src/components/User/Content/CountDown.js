@@ -5,7 +5,7 @@ const CountDown = (props) => {
     const [count, setCount] = useState(1500);
 
     useEffect(() => {
-        if (count === 0) {
+        if (count === 0 || props.check === true) {
             props.onTimeUp();
             return;
         }
