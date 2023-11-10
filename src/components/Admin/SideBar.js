@@ -12,7 +12,7 @@ import './Admin.scss';
 
 import { FaGem } from 'react-icons/fa';
 import sidebarBg from '../../assets/bg2.jpg';
-import { IoBookOutline } from "react-icons/io5";
+import { FaTrafficLight } from "react-icons/fa";
 import { MdDashboard } from "react-icons/md";
 import { Link } from 'react-router-dom';
 
@@ -43,8 +43,8 @@ const SideBar = (props) => {
                         }}
                     >
                         <div className='admin-back' onClick={() => navigate('/')}>
-                            <IoBookOutline color='#00bfff' size={'2em'} />{`  `}
-                            <span>Thi Bằng Lái Xe</span>
+                            <FaTrafficLight color='#00bfff' size={'2em'} />{`  `}
+                            <span>Ôn Thi Bằng Lái Xe</span>
                         </div>
                     </div>
                 </SidebarHeader>

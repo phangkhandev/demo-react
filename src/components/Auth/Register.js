@@ -62,15 +62,16 @@ const Register = (props) => {
     return (
         <div className="register-container">
             <div className='header'>
-                <span>Already have an account?</span>
-                <button onClick={() => navigate('/login')}>Login</button>
-                <Language />
+                <span>Bạn có đã tai khoản?</span>
+                <button onClick={() => navigate('/login')}>Đăng nhập</button>
+
             </div>
             <div className='title col-3 mx-auto'>
-                Thi Bằng Lái Xe
+                Ôn Thi Bằng Lái Xe
             </div>
             <div className='welcom col-3 mx-auto'>
-                start your journey?
+
+                bắt đầu trải nghiệm của bạn?
             </div>
             <div className='content-form col-3 mx-auto'>
                 <div className='form-group'>
@@ -84,7 +85,7 @@ const Register = (props) => {
                     />
                 </div>
                 <div className='form-group pass-group'>
-                    <label>Password (*)</label>
+                    <label>Mật khẩu (*)</label>
                     <input
                         type={isShowPassword ? "text" : "password"}
                         className="form-control"
@@ -110,7 +111,7 @@ const Register = (props) => {
                 </div>
 
                 <div className='form-group'>
-                    <label>Username</label>
+                    <label>Họ Tên</label>
                     <input
                         type={"text"}
                         className="form-control"
@@ -126,7 +127,7 @@ const Register = (props) => {
                         disabled={isLoadng}
                     >
                         {isLoadng === true && <ImSpinner10 className='loader-icon' />}
-                        <span> Register </span>
+                        <span> Đăng ký </span>
                     </button>
                     <div className='text-center'>
                         <span

@@ -11,6 +11,7 @@ import Language from './Language';
 import Profile from './Profile';
 import { useState } from 'react';
 import './Header.scss'
+import { FaTrafficLight } from 'react-icons/fa';
 
 const Header = () => {
 
@@ -44,7 +45,7 @@ const Header = () => {
             <Navbar bg="light" expand="lg">
                 <Container className='Containerscss'>
                     {/* <Navbar.Brand>PhangKhanDev</Navbar.Brand> */}
-                    <NavLink className="navbar-brand" to="/"><b style={{ color: "white" }}>Thi Bằng Lái Xe</b></NavLink>
+                    <NavLink className="navbar-brand" to="/"><b style={{ color: "white" }}><FaTrafficLight color='#00bfff' size={'1.5em'} />{` `}Ôn Thi Bằng Lái Xe</b></NavLink>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav" style={{ fontWeight: "600" }}>
 

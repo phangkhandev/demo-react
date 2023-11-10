@@ -66,15 +66,15 @@ const Login = (props) => {
     return (
         <div className="login-container">
             <div className='header'>
-                <span>Don't have an account yet?</span>
-                <button onClick={() => navigate('/register')}>Sign up</button>
-                <Language />
+                <span>Bạn vẫn chưa có tài khoản?</span>
+                <button onClick={() => navigate('/register')}>Đăng ký</button>
+
             </div>
             <div className='title col-3 mx-auto'>
-                Thi Bằng Lái Xe
+                Ôn Thi Bằng Lái Xe
             </div>
             <div className='welcom col-3 mx-auto'>
-                Hello, who's this?
+                Xin chào, bạn là ai?
             </div>
             <div className='content-form col-3 mx-auto'>
                 <div className='form-group'>
@@ -88,7 +88,7 @@ const Login = (props) => {
                     />
                 </div>
                 <div className='form-group pass-group'>
-                    <label>Password</label>
+                    <label>Mật khẩu</label>
                     <input
                         type={isShowPassword ? "text" : "password"}
                         className="form-control"
@@ -112,7 +112,7 @@ const Login = (props) => {
                         </span>
                     }
                 </div>
-                <span className='forgot-password'>Forgot password?</span>
+                <span className='forgot-password'>Quên mật khẩu?</span>
                 <div>
                     <button
                         className='btn-submit'
@@ -120,7 +120,7 @@ const Login = (props) => {
                         disabled={isLoadng}
                     >
                         {isLoadng === true && <ImSpinner10 className='loader-icon' />}
-                        <span> Login </span>
+                        <span> Đăng nhập </span>
                     </button>
                     <div className='text-center'>
                         <span

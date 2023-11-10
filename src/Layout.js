@@ -23,6 +23,8 @@ import ManageQuiz from './components/Admin/Content/Quiz/ManageQuiz';
 import Questions from './components/Admin/Content/Question/Questions';
 import PrivateRoute from './routes/PrivateRoute';
 import React, { Suspense } from 'react';
+import License from './components/Home/License';
+import Tips from './components/Home/Tips';
 
 
 
@@ -81,6 +83,30 @@ const Layout = (props) => {
                         }
                     />
 
+                    <Route path="user"
+                        element={
+                            <PrivateRoute>
+                                <User />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="cacloaigiayphep"
+                        element={
+                            <PrivateRoute>
+                                <License />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="meoonthi"
+                        element={
+                            <PrivateRoute>
+                                <Tips />
+                            </PrivateRoute>
+                        }
+                    />
+
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
@@ -88,6 +114,16 @@ const Layout = (props) => {
                 <Route path="/quiz/:id" element={<DetailQuiz3 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz4 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+
+                {/* <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
+                <Route path="/quiz/:id" element={<DetailQuiz5 />} /> */}
 
                 <Route path="/admin"
                     element={
