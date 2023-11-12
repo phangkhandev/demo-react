@@ -230,6 +230,7 @@ const DetailQuiz = (props) => {
                         handleFinishQuiz={handleFinishQuiz}
                         setIndex={setIndex}
                         check={check}
+                        quizId={quizId}
                     />
                 </div>
                 <ModalResult

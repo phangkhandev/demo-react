@@ -10,7 +10,8 @@ const RightContent = (props) => {
         props.handleFinishQuiz();
     }
 
-    const check = props.check
+    const check = props.check;
+    const quizId = props.quizId;
 
     const getClassQuestion = (index, question) => {
         //check answered
@@ -50,6 +51,7 @@ const RightContent = (props) => {
                 <CountDown
                     onTimeUp={onTimeUp}
                     check={check}
+                    quizId={quizId}
                 />
             </div>
             <div className="main-question">
