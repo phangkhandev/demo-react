@@ -25,7 +25,7 @@ const ListQuiz4 = (props) => {
 
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&
-                    arrQuiz.map((quiz, index) => {
+                    arrQuiz.sort((a, b) => a.id - b.id).map((quiz, index) => {
                         if (quiz.id > 52 && quiz.id < 62) {
 
                             return (

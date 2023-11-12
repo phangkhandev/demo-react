@@ -1,11 +1,9 @@
-//Điểm liệt
-
 import { useEffect, useState } from "react";
 import { getQuizByUser } from "../../services/apiService";
 import "./ListQuiz.scss";
 import { useNavigate } from "react-router-dom";
 
-const ListQuiz5 = (props) => {
+const ListQA4 = (props) => {
     const [arrQuiz, setArrQuiz] = useState([]);
     const navigate = useNavigate();
 
@@ -15,10 +13,13 @@ const ListQuiz5 = (props) => {
 
     const getQuizData = async () => {
         const res = await getQuizByUser();
+        console.log(">>>> ", res.DT.id)
         if (res && res.EC === 0) {
             setArrQuiz(res.DT);
         }
     }
+
+
 
     return (
         <div>
@@ -26,12 +27,12 @@ const ListQuiz5 = (props) => {
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&
                     arrQuiz.sort((a, b) => a.id - b.id).map((quiz, index) => {
-                        if (quiz.id > 61 && quiz.id < 71) {
-
+                        if (quiz.id > 116 && quiz.id < 137) {
                             return (
-                                <div key={`${index}-quiz`} className="card" style={{ width: "14rem" }}>
-                                    <img src={`data:image/jpeg;base64, ${quiz.image}`} style={{ width: "8rem", height: "8rem", marginLeft: "42px" }} alt="..." />
+                                <div key={`${index}-quiz`} className="card" style={{ width: "8rem" }}>
+                                    <img src={`data:image/jpeg;base64, ${quiz.image}`} style={{ width: "3rem", height: "3rem", marginLeft: "36px" }} alt="..." />
                                     <div className="card-body">
+
                                         <p className="card-text">{quiz.description}</p>
                                         <button
                                             className="btn btn-primary"
@@ -42,7 +43,7 @@ const ListQuiz5 = (props) => {
                                 </div>
                             )
                         }
-                    }).sort((a, b) => a.itemM > b.itemM ? -1 : 1)
+                    })
                 }
 
                 {arrQuiz && arrQuiz.length === 0 &&
@@ -59,4 +60,4 @@ const ListQuiz5 = (props) => {
     )
 }
 
-export default ListQuiz5;
+export default ListQA4;

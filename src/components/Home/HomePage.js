@@ -28,15 +28,15 @@ const HomePage = (props) => {
 
                     <div>
                         <ButtonGroup size="lg" className="mb-2">
-                            <Button onClick={() => navigate('/user')}>A1</Button>
-                            <Button onClick={() => navigate('/user')}>A2</Button>
-                            <Button onClick={() => navigate('/user')}>A3</Button>
-                            <Button onClick={() => navigate('/user')}>A4</Button>
-                            <Button onClick={() => navigate('/user')}>B1</Button>
-                            <Button onClick={() => navigate('/user')}>B2</Button>
-                            <Button onClick={() => navigate('/user')}>C</Button>
-                            <Button onClick={() => navigate('/user')}>D</Button>
-                            <Button onClick={() => navigate('/user')}>E</Button>
+                            <Button onClick={() => navigate('/bodeA1')}>A1</Button>
+                            <Button onClick={() => navigate('/bodeA2')}>A2</Button>
+                            <Button onClick={() => navigate('/bodeA3')}>A3</Button>
+                            <Button onClick={() => navigate('/bodeA4')}>A4</Button>
+                            <Button onClick={() => navigate('/bodeB1')}>B1</Button>
+                            <Button onClick={() => navigate('/bodeB2')}>B2</Button>
+                            <Button onClick={() => navigate('/bodeC')}>C</Button>
+                            <Button onClick={() => navigate('/bodeD')}>D</Button>
+                            <Button onClick={() => navigate('/bodeE')}>E</Button>
                         </ButtonGroup>
                     </div>
 
@@ -85,6 +85,12 @@ const HomePage = (props) => {
 
                     <p>Đối với các hạng bằng lái này bạn phải ôn luyện đủ 600 câu hỏi.</p>
 
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi B2 gồm 35 câu thời gian làm bài 22 phút số câu đúng tối thiểu là 32/35</p>
+
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi C gồm 40 câu thời gian làm bài 24 phút số câu đúng tối thiểu là 36/40</p>
+
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi D, E gồm 45 câu thời gian làm bài 26 phút số câu đúng tối thiểu là 41/45</p>
+
                     <h4>Câu hỏi dùng cho sát hạch lái xe mô tô hạng B1</h4>
 
                     <p>Đối với hạng bằng này bạn cần ôn 574 câu hỏi bao gồm:</p>
@@ -95,6 +101,8 @@ const HomePage = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Nhóm câu hỏi Hệ thống báo hiệu đường bộ (182 câu)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Nhóm câu hỏi Giải các thế sa hình và kỹ năng xử lý tình huống giao thông (35 câu)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Nhóm 60 câu về tình huống mất an toàn giao thông nghiêm trọng (60 câu)</p>
+
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi B1 gồm 30 câu thời gian làm bài 20 phút số câu đúng tối thiểu là 27/30</p>
 
                     <h4>Câu hỏi dùng cho sát hạch lái xe mô tô hạng A1</h4>
 
@@ -107,6 +115,8 @@ const HomePage = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Nhóm câu hỏi Giải các thế sa hình và kỹ năng xử lý tình huống giao thông (35 câu)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Nhóm 60 câu về tình huống mất an toàn giao thông nghiêm trọng (20 câu)</p>
 
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi A1 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 21/25</p>
+
                     <h4>Câu hỏi dùng cho sát hạch lái xe mô tô hạng A2</h4>
 
                     <p>Đối với hạng bằng này bạn cần ôn luyện 450 câu hỏi câu hỏi bao gồm:</p>
@@ -117,6 +127,8 @@ const HomePage = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. Nhóm câu hỏi Hệ thống báo hiệu đường bộ (182 câu)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Nhóm câu hỏi Giải các thế sa hình và kỹ năng xử lý tình huống giao thông (83)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Nhóm 60 câu về tình huống mất an toàn giao thông nghiêm trọng (50 câu)</p>
+
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi A2 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25</p>
 
                     <h4>Câu hỏi dùng cho sát hạch lái xe hạng A3, A4</h4>
 
@@ -129,6 +141,7 @@ const HomePage = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. Nhóm câu hỏi Giải các thế sa hình và kỹ năng xử lý tình huống giao thông (114)</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Nhóm 60 câu về tình huống mất an toàn giao thông nghiêm trọng (54 câu)</p>
 
+                    <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi A3, A4 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25</p>
                 </div>
             </div>
             <br />

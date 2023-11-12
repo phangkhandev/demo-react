@@ -25,6 +25,16 @@ import PrivateRoute from './routes/PrivateRoute';
 import React, { Suspense } from 'react';
 import License from './components/Home/License';
 import Tips from './components/Home/Tips';
+import ListQA1 from './components/User/ListQA1';
+import DetailQA1 from './components/User/DetailQA1';
+import ListQA2 from './components/User/ListQA2';
+import ListQA3 from './components/User/ListQA3';
+import ListQA4 from './components/User/ListQA4';
+import ListQB1 from './components/User/ListQB1';
+import ListQB2 from './components/User/ListQB2';
+import ListQC from './components/User/ListQC';
+import ListQD from './components/User/ListQD';
+import ListQE from './components/User/ListQE';
 
 
 
@@ -107,16 +117,88 @@ const Layout = (props) => {
                         }
                     />
 
+                    <Route path="bodeA1"
+                        element={
+                            <PrivateRoute>
+                                <ListQA1 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeA2"
+                        element={
+                            <PrivateRoute>
+                                <ListQA2 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeA3"
+                        element={
+                            <PrivateRoute>
+                                <ListQA3 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeA4"
+                        element={
+                            <PrivateRoute>
+                                <ListQA4 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeB1"
+                        element={
+                            <PrivateRoute>
+                                <ListQB1 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeB2"
+                        element={
+                            <PrivateRoute>
+                                <ListQB2 />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeC"
+                        element={
+                            <PrivateRoute>
+                                <ListQC />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeD"
+                        element={
+                            <PrivateRoute>
+                                <ListQD />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="bodeE"
+                        element={
+                            <PrivateRoute>
+                                <ListQE />
+                            </PrivateRoute>
+                        }
+                    />
+
                 </Route>
 
                 <Route path="/quiz/:id" element={<DetailQuiz />} />
-                <Route path="/quiz/:id" element={<DetailQuiz2 />} />
+                {/* <Route path="/quiz/:id" element={<DetailQuiz2 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz3 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz4 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz5 />} />
 
+                <Route path="/quiz/:id" element={<DetailQA1 />} /> */}
                 {/* <Route path="/quiz/:id" element={<DetailQuiz5 />} />
-                <Route path="/quiz/:id" element={<DetailQuiz5 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz5 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz5 />} />
                 <Route path="/quiz/:id" element={<DetailQuiz5 />} />

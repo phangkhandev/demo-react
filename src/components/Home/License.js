@@ -123,7 +123,7 @@ const License = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Người đủ 18 tuổi (phải đủ cả ngày, tháng, năm).</p>
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Các giấy tờ hồ sơ: Đơn đăng kí, CMND, giấy khám sức khỏe,…</p>
 
-                    <p>Thời hạn bằng lái xe hạng A3: <b>10 năm</b> kể từ ngày cấp.</p>
+                    <p>Thời hạn bằng lái xe hạng A4: <b>10 năm</b> kể từ ngày cấp.</p>
 
                     <p>Quy định gplx hạng A4:</p>
 

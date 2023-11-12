@@ -25,7 +25,7 @@ const ListQuiz = (props) => {
 
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&
-                    arrQuiz.map((quiz, index) => {
+                    arrQuiz.sort((a, b) => a.id - b.id).map((quiz, index) => {
                         if (quiz.id < 35) {
                             return (
                                 <div key={`${index}-quiz`} className="card" style={{ width: "14rem" }}>
