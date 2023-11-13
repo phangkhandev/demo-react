@@ -23,6 +23,7 @@ const ListQC = (props) => {
 
     return (
         <div>
+            <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>Đề thi C gồm 40 câu thời gian làm bài 24 phút số câu đúng tối thiểu là 36/40</p>
 
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&

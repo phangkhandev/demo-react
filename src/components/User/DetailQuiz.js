@@ -238,6 +238,7 @@ const DetailQuiz = (props) => {
                     setShow={setIsShowModalResult}
                     dataModalResult={dataModalResult}
                     handleShowAnswer={handleShowAnswer}
+                    quizId={quizId}
                 />
             </div>
         </>

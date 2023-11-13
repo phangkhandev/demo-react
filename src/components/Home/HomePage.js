@@ -6,8 +6,17 @@ import Logo from "../../assets/sa-hinh-la-gi-1.jpg";
 import Logo2 from "../../assets/anh-minh-hoa-1564047067734550662695-crop-1564047073690577996465.jpg"
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import { useState } from "react";
 import "./HomePage.scss";
+import "./style.scss";
+import useNode from "./Hooks/useNode";
 import { Link } from 'react-router-dom'
+import Comment from "./Comment/Comment";
+
+const comments = {
+    id: 1,
+    items: [],
+};
 const HomePage = (props) => {
 
     const navigate = useNavigate();
@@ -15,55 +24,90 @@ const HomePage = (props) => {
 
     const isAuthenticated = useSelector(state => state.user.isAuthenticated);
 
+    const [commentsData, setCommentsData] = useState(comments);
+
+    const { insertNode, editNode, deleteNode } = useNode();
+
+    const handleInsertNode = (folderId, item) => {
+        const finalStructure = insertNode(commentsData, folderId, item);
+        setCommentsData(finalStructure);
+    };
+
+    const handleEditNode = (folderId, value) => {
+        const finalStructure = editNode(commentsData, folderId, value);
+        setCommentsData(finalStructure);
+    };
+
+    const handleDeleteNode = (folderId) => {
+        const finalStructure = deleteNode(commentsData, folderId);
+        const temp = { ...finalStructure };
+        setCommentsData(temp);
+    };
+
 
     return (
         <>
             <div className="row container">
                 <div className="col-5">
                     <br />
-                    <h2>
-                        Ôn thi theo bộ đề!
-                    </h2>
-                    <br />
+                    <div style={{ border: "1px solid green", borderRadius: "5px", padding: "10px" }}>
+                        <h2>
+                            Ôn thi theo bộ đề!
+                        </h2>
+                        <br />
 
-                    <div>
-                        <ButtonGroup size="lg" className="mb-2">
-                            <Button onClick={() => navigate('/bodeA1')}>A1</Button>
-                            <Button onClick={() => navigate('/bodeA2')}>A2</Button>
-                            <Button onClick={() => navigate('/bodeA3')}>A3</Button>
-                            <Button onClick={() => navigate('/bodeA4')}>A4</Button>
-                            <Button onClick={() => navigate('/bodeB1')}>B1</Button>
-                            <Button onClick={() => navigate('/bodeB2')}>B2</Button>
-                            <Button onClick={() => navigate('/bodeC')}>C</Button>
-                            <Button onClick={() => navigate('/bodeD')}>D</Button>
-                            <Button onClick={() => navigate('/bodeE')}>E</Button>
-                        </ButtonGroup>
+                        <div>
+                            <ButtonGroup size="lg" className="mb-2">
+                                <Button onClick={() => navigate('/bodeA1')}>A1</Button>
+                                <Button onClick={() => navigate('/bodeA2')}>A2</Button>
+                                <Button onClick={() => navigate('/bodeA3')}>A3</Button>
+                                <Button onClick={() => navigate('/bodeA4')}>A4</Button>
+                                <Button onClick={() => navigate('/bodeB1')}>B1</Button>
+                                <Button onClick={() => navigate('/bodeB2')}>B2</Button>
+                                <Button onClick={() => navigate('/bodeC')}>C</Button>
+                                <Button onClick={() => navigate('/bodeD')}>D</Button>
+                                <Button onClick={() => navigate('/bodeE')}>E</Button>
+                            </ButtonGroup>
+                        </div>
+
+                        <br />
+
+
+                        <div>
+                            {isAuthenticated === false ?
+                                <button className="btn btn-secondary" onClick={() => navigate('/login')}>Làm bài bây giờ</button>
+                                :
+                                <button className="btn btn-secondary" onClick={() => navigate('/baithi')}>Làm bài bây giờ</button>
+                            }
+                        </div>
+
+
+                        <br />
+
+                        <Button variant="success" onClick={() => navigate('/cacloaigiayphep')}><b>Các loại giấy phép lái xe hiện nay</b></Button>
+                        <br />
+                        <br />
+                        <Button href="https://lythuyet.onthigplx.vn/cac-loai-bien-bao-giao-thong-duong-bo/" variant="warning" ><b>Các loại biển báo giao thông đường bộ </b><b style={{ color: "red" }}> {'>>'}lythuyet.onthigplx.vn</b></Button>
+                        <br />
+                        <br />
+                        <Button variant="danger" href="https://www.csgt.vn/tra-cuu-phuong-tien-vi-pham.html"><b>Tra cứu phạt nguội</b></Button>
+                        <br />
+                        <br />
+                        <Button variant="info" onClick={() => navigate('/meoonthi')}><b>Mẹo ôn thi hiệu quả</b></Button>
+
+                        <br />
                     </div>
-
                     <br />
-
-
-                    <div>
-                        {isAuthenticated === false ?
-                            <button className="btn btn-secondary" onClick={() => navigate('/login')}>Làm bài bây giờ</button>
-                            :
-                            <button className="btn btn-secondary" onClick={() => navigate('/baithi')}>Làm bài bây giờ</button>
-                        }
+                    <br />
+                    <br />
+                    <div className="App">
+                        <Comment
+                            handleInsertNode={handleInsertNode}
+                            handleEditNode={handleEditNode}
+                            handleDeleteNode={handleDeleteNode}
+                            comment={commentsData}
+                        />
                     </div>
-
-
-                    <br />
-
-                    <Button variant="success" onClick={() => navigate('/cacloaigiayphep')}><b>Các loại giấy phép lái xe hiện nay</b></Button>
-                    <br />
-                    <br />
-                    <Button href="https://lythuyet.onthigplx.vn/cac-loai-bien-bao-giao-thong-duong-bo/" variant="warning" ><b>Các loại biển báo giao thông đường bộ </b><b style={{ color: "red" }}> {'>>'}lythuyet.onthigplx.vn</b></Button>
-                    <br />
-                    <br />
-                    <Button variant="danger" href="https://www.csgt.vn/tra-cuu-phuong-tien-vi-pham.html"><b>Tra cứu phạt nguội</b></Button>
-                    <br />
-                    <br />
-                    <Button variant="info" onClick={() => navigate('/meoonthi')}><b>Mẹo ôn thi hiệu quả</b></Button>
 
                 </div>
                 <div className="col-7">
@@ -142,8 +186,10 @@ const HomePage = (props) => {
                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6. Nhóm 60 câu về tình huống mất an toàn giao thông nghiêm trọng (54 câu)</p>
 
                     <p style={{ color: "blue" }}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#8718; Đề thi A3, A4 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25</p>
+
                 </div>
             </div>
+
             <br />
             <br />
         </>

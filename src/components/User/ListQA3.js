@@ -23,7 +23,7 @@ const ListQA3 = (props) => {
 
     return (
         <div>
-
+            <p style={{ color: "red", textAlign: "center", marginTop: "10px" }}>Đề thi A3 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25</p>
             <div className="list-quiz-container container">
                 {arrQuiz && arrQuiz.length > 0 &&
                     arrQuiz.sort((a, b) => a.id - b.id).map((quiz, index) => {
