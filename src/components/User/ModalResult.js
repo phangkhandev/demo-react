@@ -10,8 +10,6 @@ const ModalResult = (props) => {
 
     const quizId = props.quizId;
 
-    console.log(">>> ", dataModalResult)
-
     return (
         <>
             <Modal

@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import CountDown from "./Content/CountDown";
 
+
+
 const DetailQuiz = (props) => {
     const navigate = useNavigate();
     const { t } = useTranslation();
@@ -28,9 +30,42 @@ const DetailQuiz = (props) => {
     const [check, setCheck] = useState(false);
 
 
+
     useEffect(() => {
         fetchQuestions();
+        checkId();
     }, [quizId]);
+
+    const checkId = () => {
+        if (quizId == 23) {
+            alert("Đề thi A1 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 21/25")
+        }
+        if (quizId == 24) {
+            alert("Đề thi A2 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25")
+        }
+        if (quizId == 28) {
+            alert("Đề thi A3 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25")
+        }
+        if (quizId == 29) {
+            alert("Đề thi A4 gồm 25 câu thời gian làm bài 19 phút số câu đúng tối thiểu là 23/25")
+        }
+        if (quizId == 30) {
+            alert("Đề thi B1 gồm 30 câu thời gian làm bài 20 phút số câu đúng tối thiểu là 27/30")
+        }
+        if (quizId == 31) {
+            alert("Đề thi B2 gồm 35 câu thời gian làm bài 22 phút số câu đúng tối thiểu là 32/35")
+        }
+        if (quizId == 32) {
+            alert("Đề thi C gồm 40 câu thời gian làm bài 24 phút số câu đúng tối thiểu là 36/40")
+        }
+        if (quizId == 33) {
+            alert("Đề thi D gồm 45 câu thời gian làm bài 26 phút số câu đúng tối thiểu là 41/45")
+        }
+        if (quizId == 34) {
+            alert("Đề thi E gồm 45 câu thời gian làm bài 26 phút số câu đúng tối thiểu là 41/45")
+        }
+
+    }
 
     const fetchQuestions = async () => {
         let res = await getDataQuiz(quizId);
