@@ -32,8 +32,13 @@ const DetailQuiz = (props) => {
 
 
     useEffect(() => {
-        fetchQuestions();
         checkId();
+    }, []);
+
+
+    useEffect(() => {
+        fetchQuestions();
+
     }, [quizId]);
 
     const checkId = () => {

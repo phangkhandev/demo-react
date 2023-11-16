@@ -6,12 +6,14 @@ const RightContent = (props) => {
 
     const { dataQuiz } = props;
 
-    const onTimeUp = () => {
-        props.handleFinishQuiz();
-    }
-
     const check = props.check;
     const quizId = props.quizId;
+
+    const onTimeUp = () => {
+        if (check == true) {
+            return
+        }
+    }
 
     const getClassQuestion = (index, question) => {
         //check answered

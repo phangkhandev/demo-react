@@ -30,7 +30,7 @@ const History = (props) => {
             }
             setListHistory(newData);
         }
-        console.log("check var: ", res);
+
     }
 
 
