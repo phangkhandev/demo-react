@@ -89,15 +89,16 @@ const License = (props) => {
                         <Button variant="success" onClick={() => navigate('/cacloaigiayphep')}><b>Các loại giấy phép lái xe hiện nay</b></Button>
                         <br />
                         <br />
-                        <Button href="https://lythuyet.onthigplx.vn/cac-loai-bien-bao-giao-thong-duong-bo/" variant="warning" ><b>Các loại biển báo giao thông đường bộ </b><b style={{ color: "red" }}> {'>>'}lythuyet.onthigplx.vn</b></Button>
+                        <Button target='_blank' href="https://lythuyet.onthigplx.vn/cac-loai-bien-bao-giao-thong-duong-bo/" variant="warning" ><b>Các loại biển báo giao thông đường bộ </b><b style={{ color: "red" }}> {'>>'}lythuyet.onthigplx.vn</b></Button>
                         <br />
                         <br />
-                        <Button variant="danger" href="https://www.csgt.vn/tra-cuu-phuong-tien-vi-pham.html"><b>Tra cứu phạt nguội</b></Button>
+                        <Button target='_blank' variant="warning" href="https://www.csgt.vn/tra-cuu-phuong-tien-vi-pham.html"><b>Tra cứu phạt nguội</b></Button>
                         <br />
                         <br />
                         <Button variant="info" onClick={() => navigate('/meoonthi')}><b>Mẹo ôn thi hiệu quả</b></Button>
-
                         <br />
+                        <br />
+                        <Button variant="danger" onClick={() => navigate('/tuvan')}><b>Tư vấn về luật</b></Button>
                     </div>
                     <br />
                     <br />

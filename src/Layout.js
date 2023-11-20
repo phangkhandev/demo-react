@@ -35,6 +35,7 @@ import ListQB2 from './components/User/ListQB2';
 import ListQC from './components/User/ListQC';
 import ListQD from './components/User/ListQD';
 import ListQE from './components/User/ListQE';
+import Chatbot from './components/Home/Chatbot';
 
 
 
@@ -113,6 +114,14 @@ const Layout = (props) => {
                         element={
                             <PrivateRoute>
                                 <Tips />
+                            </PrivateRoute>
+                        }
+                    />
+
+                    <Route path="tuvan"
+                        element={
+                            <PrivateRoute>
+                                <Chatbot />
                             </PrivateRoute>
                         }
                     />
