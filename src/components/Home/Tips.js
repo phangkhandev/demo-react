@@ -101,8 +101,7 @@ const License = (props) => {
                         <Button variant="danger" onClick={() => navigate('/tuvan')}><b>Tư vấn về luật</b></Button>
                     </div>
                     <br />
-                    <br />
-                    <br />
+
                     <div className="App">
                         <Comment
                             handleInsertNode={handleInsertNode}
